@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
+
         //TODO вынести в другой класс? и реализовать логику
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
@@ -111,7 +112,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void showPrayCategories(List<PraysCategories> categories){
-        mPraysCategories = categories;
+        mPraysCategories.clear();
+        mPraysCategories.addAll(categories);
         mAdapter.notifyDataSetChanged();
     }
 

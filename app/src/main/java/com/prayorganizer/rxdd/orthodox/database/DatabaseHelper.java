@@ -44,7 +44,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = mDatabase.rawQuery(query, null);
         if (cursor == null) return null;
         System.out.println(Arrays.toString(cursor.getColumnNames()));
-        mDatabase.close();
         return cursor;
 
     }
@@ -55,14 +54,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super.close();
     }
 
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            if (newVersion > oldVersion) {
-                copyDB();
-            }
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        if (newVersion > oldVersion) {
+            copyDB();
         }
+    }
 
-//TODO при добавлении новых строк база не обновляется после перезаливки приложения, надо чистить через file explorer
+    //TODO при добавлении новых строк база не обновляется после перезаливки приложения, надо чистить через file explorer
     public void createDB() throws IOException {
 
         boolean existDB = checkDB();
@@ -120,34 +119,3 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
