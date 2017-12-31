@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">PrayOrganizer</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Настройки</string>
+    <string name="prays">Молитвы</string>
+    <string name="icons">Иконы</string>
+    <string name="pray_of_day">Молитва дня</string>
+    <string name="psalms">Псалмы</string>
+    <string name="recepts">Рецепты на пост</string>
+    <string name="favorites">Избранное</string>
+    <string name="search">Поиск</string>
+    <string name="communicate">Поделиться</string>
+    <string name="map">Карта храмов</string>
+    <string name="hello_god">Привет бог!</string>
+
+    <string name="Preference1Title">Размер шрифта</string>
+    <string name="Preference1Summary">Пожалуйста, выберите размер от 12 до 34</string>
+    <string name="Preference1Format">%d sp</string>
+
+</resources>

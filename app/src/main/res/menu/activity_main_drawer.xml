@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_prays"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/prays" />
+        <item
+            android:id="@+id/nav_icons"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/icons" />
+        <item
+            android:id="@+id/nav_pray_of_day"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/pray_of_day" />
+        <item
+            android:id="@+id/nav_psalms"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/psalms" />
+        <item
+            android:id="@+id/nav_recepts"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/recepts"
+            />
+        <item
+            android:id="@+id/nav_favorites"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/favorites" />
+
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/map" />
+
+    </group>
+
+
+</menu>

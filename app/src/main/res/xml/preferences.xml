@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="Шрифт">
+
+        <org.anasthase.androidseekbarpreference.SeekBarPreference
+            android:defaultValue="15"
+            android:key="preference_size"
+            android:summary="@string/Preference1Summary"
+            android:title="@string/Preference1Title"
+            app:format="@string/Preference1Format"
+            app:maxValue="25"
+            app:minValue="12"
+            app:stepValue="1" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>
