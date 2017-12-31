@@ -46,6 +46,7 @@ public class HolyModel {
         mDatabaseHelper.openDB();
         Cursor cursor = mDatabaseHelper.getCursor(selectQuery);
         if (cursor.moveToFirst()) {
+<<<<<<< HEAD
             do {
                 PraysCategories prays_cats;
                 prays_cats = new PraysCategories(
@@ -58,6 +59,20 @@ public class HolyModel {
             cursor.close();
             mDatabaseHelper.close();
         }
+=======
+                do {
+                    PraysCategories prays_cats;
+                    prays_cats = new PraysCategories(
+                            cursor.getString(cursor.getColumnIndex(Tables.COLUMN_MASTER_CATNAME)),
+                            cursor.getString(cursor.getColumnIndex(Tables.COLUMN_MASTER_ID))
+                    );
+                    praysMasterCategories.add(prays_cats);
+
+                } while (cursor.moveToNext());
+                cursor.close();
+            mDatabaseHelper.close();
+            }
+>>>>>>> 34d6526100c112a223d6c940194c993455bcd2cc
 
         return praysMasterCategories;
     }
