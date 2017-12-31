@@ -44,7 +44,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = mDatabase.rawQuery(query, null);
         if (cursor == null) return null;
         System.out.println(Arrays.toString(cursor.getColumnNames()));
-        mDatabase.close();
         return cursor;
 
     }

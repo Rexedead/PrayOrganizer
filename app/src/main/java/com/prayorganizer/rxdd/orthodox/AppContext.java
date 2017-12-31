@@ -12,7 +12,15 @@ public class AppContext extends Application{
     private static Context sAppContext;
 
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        sAppContext = getApplicationContext();
+
+    }
+
     public static Context getAppContext() {
         return sAppContext;
     }
+
 }
