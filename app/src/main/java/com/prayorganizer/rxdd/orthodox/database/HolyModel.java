@@ -8,8 +8,6 @@ import com.prayorganizer.rxdd.orthodox.content.PraysCategories;
 import com.prayorganizer.rxdd.orthodox.content.Psalm;
 import com.prayorganizer.rxdd.orthodox.content.PsalmsCategories;
 import com.prayorganizer.rxdd.orthodox.database.DatabaseSchema.*;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,12 +27,7 @@ public class HolyModel {
     
 
     private HolyModel() {
-        try {
-            mDatabaseHelper = new DatabaseHelper(AppContext.getAppContext());
-            mDatabaseHelper.createDB();
-        } catch (IOException e) {
-            throw new Error("Unable to create database");
-        }
+               mDatabaseHelper = new DatabaseHelper(AppContext.getAppContext());
     }
 
 
@@ -59,7 +52,6 @@ public class HolyModel {
         mDatabaseHelper.close();
         return praysMasterCategories;
     }
-
 
     public List<PraysCategories> getSlaveCategoriesOfPrays(String masterCategory) {
         List<PraysCategories> praysSlaveCategories = new ArrayList<>();

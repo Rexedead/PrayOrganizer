@@ -18,7 +18,6 @@ class DatabaseSchema {
         static final String PSALMS_MASTER = "psalt_cat";
         static final String PSALM_HEAD = "psalt_head";
         static final String PSALM_MAIN = "psalt_main";
-        static final String PSALM_CATS = "psalt_cat";
 
     }
     static final class Columns {
