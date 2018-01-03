@@ -23,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    public DatabaseHelper (Context context) {
+    DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, VERSION);
         if (android.os.Build.VERSION.SDK_INT >= 4.2) {
             DB_PATH = context.getApplicationInfo().dataDir + "/databases/"; //context.getApplicationInfo().dataDir + "/databases/";
@@ -39,7 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Cursor getCursor(String query){
+    Cursor getCursor(String query){
 
         Cursor cursor = mDatabase.rawQuery(query, null);
         if (cursor == null) return null;
@@ -62,7 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //TODO при добавлении новых строк база не обновляется после перезаливки приложения, надо чистить через file explorer
-    public void createDB() throws IOException {
+    void createDB() throws IOException {
 
         boolean existDB = checkDB();
         if (existDB) {
@@ -107,15 +107,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void openDB() {
+    void openDB() {
         String path = DB_PATH + DATABASE_NAME;
         mDatabase = SQLiteDatabase.openDatabase(path, null, SQLiteDatabase.OPEN_READONLY);
     }
-
-    public SQLiteDatabase getDB() {
-        return mDatabase;
-    }
-
-
 
 }

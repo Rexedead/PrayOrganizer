@@ -19,26 +19,23 @@ public class PraysCategoriesAdapter extends FilterAdapter<PraysCategories, Prays
     @Override
     public PraysViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.prays_categories_list_row, parent, false);
+                    .inflate(R.layout.categories_list_row, parent, false);
 
         return new PraysViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(PraysViewHolder holder, int position) {
-        PraysCategories movie = mListFiltered.get(position);
-            holder.title.setText(movie.getTitle());
-            holder.genre.setText(movie.getDesc());
+        PraysCategories praysCategories = mListFiltered.get(position);
+            holder.title.setText(praysCategories.getTitle());
     }
 
     class PraysViewHolder extends RecyclerView.ViewHolder {
-        TextView title, genre;
+        TextView title;
 
         PraysViewHolder(View view) {
             super(view);
             title = view.findViewById(R.id.title);
-            genre = view.findViewById(R.id.desc);
-
         }
     }
 
@@ -48,14 +45,11 @@ public class PraysCategoriesAdapter extends FilterAdapter<PraysCategories, Prays
 
     @Override
     protected boolean filter(String str, PraysCategories obj) {
-        return obj.getTitle().toLowerCase().contains(str.toLowerCase()) || obj.getDesc().contains(str);
+        return obj.getTitle().toLowerCase().contains(str.toLowerCase());
     }
 
 
 //    row.getTitle().toLowerCase().contains(charString.toLowerCase()) || row.getDesc().contains(charSequence)
-
-
-
 //        @Override
 //        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 //            View itemView = LayoutInflater.from(parent.getContext())

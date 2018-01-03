@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.SearchView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,8 +18,6 @@ import com.prayorganizer.rxdd.orthodox.R;
 import com.prayorganizer.rxdd.orthodox.settings.Settings;
 import com.prayorganizer.rxdd.orthodox.view.fragments.PraysCategoriesFragment;
 
-
-//TODO Psalm
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override

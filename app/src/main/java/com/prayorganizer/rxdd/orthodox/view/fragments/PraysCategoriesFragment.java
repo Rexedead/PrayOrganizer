@@ -40,7 +40,7 @@ public class PraysCategoriesFragment extends Fragment{
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
 
-        mPraysCategories = HolyModel.getInstance().getMasterCategories();
+        mPraysCategories = HolyModel.getInstance().getMasterCategoriesOfPrays();
         mAdapter = new PraysCategoriesAdapter(mPraysCategories);
 
     }
