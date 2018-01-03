@@ -53,12 +53,12 @@ public class HolyPresenter {
     public void doLatestEvent(){
         switch (mCurrentEvent){
             case EVENT_SHOW_PRAYS_CATEGORIES:
-                showCatgories();
+                showCategories();
                 break;
         }
     }
 
-    private void showCatgories(){
+    private void showCategories(){
         List<PraysCategories> praysCategories = mHolyModel.getMasterCategories();
         mMainActivity.showPrayCategories(praysCategories);
 

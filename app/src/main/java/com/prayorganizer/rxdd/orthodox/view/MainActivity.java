@@ -32,7 +32,7 @@ import com.prayorganizer.rxdd.orthodox.settings.Settings;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//TODO Psalm
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 

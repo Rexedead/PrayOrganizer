@@ -10,3 +10,6 @@
 /app/src/androidTest/
 /app/src/test/
 /gradle/
+/app/src/desktop.ini
+app/desktop.ini
+app/libs/

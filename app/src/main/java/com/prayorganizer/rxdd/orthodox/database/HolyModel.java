@@ -1,7 +1,6 @@
 package com.prayorganizer.rxdd.orthodox.database;
 
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
 import com.prayorganizer.rxdd.orthodox.AppContext;
 import com.prayorganizer.rxdd.orthodox.content.Pray;
@@ -22,22 +21,19 @@ public class HolyModel {
     private static final HolyModel sInstance = new HolyModel();
 
     private DatabaseHelper mDatabaseHelper;
+
     public static HolyModel getInstance() {
         return sInstance;
     }
 
     private HolyModel() {
-        try{
+        try {
             mDatabaseHelper = new DatabaseHelper(AppContext.getAppContext());
             mDatabaseHelper.createDB();
-            mDatabaseHelper.close();
         } catch (IOException e) {
             throw new Error("Unable to create database");
         }
     }
-
-
-
 
 
     public List<PraysCategories> getMasterCategories() {
@@ -46,7 +42,6 @@ public class HolyModel {
         mDatabaseHelper.openDB();
         Cursor cursor = mDatabaseHelper.getCursor(selectQuery);
         if (cursor.moveToFirst()) {
-<<<<<<< HEAD
             do {
                 PraysCategories prays_cats;
                 prays_cats = new PraysCategories(
@@ -57,28 +52,12 @@ public class HolyModel {
 
             } while (cursor.moveToNext());
             cursor.close();
-            mDatabaseHelper.close();
+
         }
-=======
-                do {
-                    PraysCategories prays_cats;
-                    prays_cats = new PraysCategories(
-                            cursor.getString(cursor.getColumnIndex(Tables.COLUMN_MASTER_CATNAME)),
-                            cursor.getString(cursor.getColumnIndex(Tables.COLUMN_MASTER_ID))
-                    );
-                    praysMasterCategories.add(prays_cats);
 
-                } while (cursor.moveToNext());
-                cursor.close();
-            mDatabaseHelper.close();
-            }
->>>>>>> 34d6526100c112a223d6c940194c993455bcd2cc
-
+        mDatabaseHelper.close();
         return praysMasterCategories;
     }
-
-
-
 
 
     public List<PraysCategories> getSlaveCategories(String masterCategory) {
@@ -86,19 +65,19 @@ public class HolyModel {
 
         Cursor cursor;
 
-        String masterIdQuery = "SELECT "+Tables.COLUMN_MASTER_ID +
+        String masterIdQuery = "SELECT " + Tables.COLUMN_MASTER_ID +
                 " FROM " + Tables.TABLE_PRAYS_MASTER +
-                " WHERE "+Tables.TABLE_PRAYS_MASTER+"."+Tables.COLUMN_MASTER_CATNAME+"="+ masterCategory;
-
+                " WHERE " + Tables.TABLE_PRAYS_MASTER + "." + Tables.COLUMN_MASTER_CATNAME + "=" + masterCategory;
+        mDatabaseHelper.openDB();
         cursor = mDatabaseHelper.getCursor(masterIdQuery);
         String masterId = cursor.getString(Integer.parseInt(Tables.COLUMN_MASTER_ID));
 
 
-        String selectQuery = "SELECT "+Tables.COLUMN_SLAVE_CATNAME +
-                " FROM "+Tables.TABLE_PRAYS_SLAVE+
-                " LEFT JOIN "+Tables.TABLE_PRAYS_CATS+
-                " ON "+Tables.TABLE_PRAYS_SLAVE+"."+Tables.COLUMN_SLAVE_ID+"="+Tables.TABLE_PRAYS_CATS+"."+Tables.COLUMN_MASTER_ID+
-                " WHERE "+Tables.TABLE_PRAYS_CATS+"."+Tables.COLUMN_MASTER_ID+"="+ masterId;
+        String selectQuery = "SELECT " + Tables.COLUMN_SLAVE_CATNAME +
+                " FROM " + Tables.TABLE_PRAYS_SLAVE +
+                " LEFT JOIN " + Tables.TABLE_PRAYS_CATS +
+                " ON " + Tables.TABLE_PRAYS_SLAVE + "." + Tables.COLUMN_SLAVE_ID + "=" + Tables.TABLE_PRAYS_CATS + "." + Tables.COLUMN_MASTER_ID +
+                " WHERE " + Tables.TABLE_PRAYS_CATS + "." + Tables.COLUMN_MASTER_ID + "=" + masterId;
 
 
         cursor = mDatabaseHelper.getCursor(selectQuery);
@@ -113,28 +92,26 @@ public class HolyModel {
             } while (cursor.moveToNext());
             cursor.close();
         }
-
+        mDatabaseHelper.close();
         return praysSlaveCategories;
     }
-
-
 
 
     public List<Pray> getPrays(String slaveCategory) {
         List<Pray> praysText = new ArrayList<>();
         Cursor cursor;
-        String slaveIdQuery = "SELECT "+Tables.COLUMN_SLAVE_ID +
+        String slaveIdQuery = "SELECT " + Tables.COLUMN_SLAVE_ID +
                 " FROM " + Tables.TABLE_PRAYS_SLAVE +
-                " WHERE "+Tables.TABLE_PRAYS_SLAVE+"."+Tables.COLUMN_SLAVE_CATNAME+"="+ slaveCategory;
-
+                " WHERE " + Tables.TABLE_PRAYS_SLAVE + "." + Tables.COLUMN_SLAVE_CATNAME + "=" + slaveCategory;
+        mDatabaseHelper.openDB();
         cursor = mDatabaseHelper.getCursor(slaveIdQuery);
         String slaveId = cursor.getString(Integer.parseInt(Tables.COLUMN_SLAVE_ID));
 
-        String selectQuery = "SELECT "+ Tables.COLUMN_PRAY_TEXT+
-                " FROM "+ Tables.TABLE_PRAYS_MAIN+
-                " LEFT JOIN "+Tables.TABLE_PRAYS_CATS+
-                " ON "+ Tables.TABLE_PRAYS_MAIN+"."+Tables.COLUMN_PRAY_ID+"="+Tables.TABLE_PRAYS_CATS+"."+Tables.COLUMN_SLAVE_ID +
-                " WHERE "+ Tables.TABLE_PRAYS_CATS+"."+Tables.COLUMN_SLAVE_ID+"="+ slaveId;
+        String selectQuery = "SELECT " + Tables.COLUMN_PRAY_TEXT +
+                " FROM " + Tables.TABLE_PRAYS_MAIN +
+                " LEFT JOIN " + Tables.TABLE_PRAYS_CATS +
+                " ON " + Tables.TABLE_PRAYS_MAIN + "." + Tables.COLUMN_PRAY_ID + "=" + Tables.TABLE_PRAYS_CATS + "." + Tables.COLUMN_SLAVE_ID +
+                " WHERE " + Tables.TABLE_PRAYS_CATS + "." + Tables.COLUMN_SLAVE_ID + "=" + slaveId;
 
 
         cursor = mDatabaseHelper.getCursor(selectQuery);
@@ -149,10 +126,9 @@ public class HolyModel {
             cursor.close();
         }
 
-
+        mDatabaseHelper.close();
         return praysText;
     }
-
 
 
 }

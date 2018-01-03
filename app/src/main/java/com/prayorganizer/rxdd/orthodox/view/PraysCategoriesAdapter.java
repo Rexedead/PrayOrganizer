@@ -32,8 +32,9 @@ public class PraysCategoriesAdapter extends RecyclerView.Adapter<PraysCategories
     }
 
 
-    public PraysCategoriesAdapter(List<PraysCategories> praysList) {
+    PraysCategoriesAdapter(List<PraysCategories> praysList) {
         this.praysList = praysList;
+        this.praysListFiltered = praysList;
     }
 
     @Override
@@ -46,14 +47,14 @@ public class PraysCategoriesAdapter extends RecyclerView.Adapter<PraysCategories
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        PraysCategories movie = praysList.get(position);
+        PraysCategories movie = praysListFiltered.get(position);
         holder.title.setText(movie.getTitle());
         holder.genre.setText(movie.getDesc());
     }
 
     @Override
     public int getItemCount() {
-        return praysList.size();
+        return praysListFiltered.size();
     }
 
 
@@ -90,9 +91,6 @@ public class PraysCategoriesAdapter extends RecyclerView.Adapter<PraysCategories
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
                 praysListFiltered = (ArrayList<PraysCategories>) filterResults.values;
-                //TODO обновление списка после фильтрации
-//                praysList.clear();
-//                praysList.addAll(praysListFiltered);
                 notifyDataSetChanged();
             }
         };
