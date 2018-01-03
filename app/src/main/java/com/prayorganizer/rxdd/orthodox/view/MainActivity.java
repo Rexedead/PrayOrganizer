@@ -187,6 +187,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
+            
         } else if (id == R.id.nav_psalms) {
 
         } else if (id == R.id.nav_icons) {
