@@ -20,13 +20,11 @@ public class PraysCategoriesAdapter extends RecyclerView.Adapter<PraysCategories
     private List<PraysCategories> praysListFiltered;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView title, genre;
+        TextView mCategoryName;
 
         MyViewHolder(View view) {
             super(view);
-            title = view.findViewById(R.id.title);
-            genre = view.findViewById(R.id.desc);
-
+            mCategoryName = view.findViewById(R.id.title);
 
         }
     }
@@ -40,16 +38,15 @@ public class PraysCategoriesAdapter extends RecyclerView.Adapter<PraysCategories
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.prays_categories_list_row, parent, false);
+                .inflate(R.layout.categories_list_row, parent, false);
 
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        PraysCategories movie = praysListFiltered.get(position);
-        holder.title.setText(movie.getTitle());
-        holder.genre.setText(movie.getDesc());
+        PraysCategories prlist = praysListFiltered.get(position);
+        holder.mCategoryName.setText(prlist.getTitle());
     }
 
     @Override

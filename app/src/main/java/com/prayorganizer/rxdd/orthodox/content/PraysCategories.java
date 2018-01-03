@@ -1,7 +1,7 @@
 package com.prayorganizer.rxdd.orthodox.content;
 
 public class PraysCategories {
-    private String title, desc;
+    private String title, desc; //desk = img in future
 
 
     public PraysCategories(String title, String desc) {

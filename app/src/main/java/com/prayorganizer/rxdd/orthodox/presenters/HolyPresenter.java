@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by danbi on 31.12.2017.
+ *
  */
 
 public class HolyPresenter {
@@ -59,7 +60,7 @@ public class HolyPresenter {
     }
 
     private void showCategories(){
-        List<PraysCategories> praysCategories = mHolyModel.getMasterCategories();
+        List<PraysCategories> praysCategories = mHolyModel.getMasterCategoriesOfPrays();
         mMainActivity.showPrayCategories(praysCategories);
 
     }
