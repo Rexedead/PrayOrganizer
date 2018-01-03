@@ -1,5 +1,6 @@
 package com.prayorganizer.rxdd.orthodox.content;
 
+
 public class PraysCategories {
     private String title, desc;
 
