@@ -16,6 +16,16 @@ import java.util.List;
 
 public class PraysCategoriesAdapter extends FilterAdapter<PraysCategories, PraysCategoriesAdapter.PraysViewHolder> {
 
+    class PraysViewHolder extends RecyclerView.ViewHolder {
+        TextView title;
+
+        PraysViewHolder(View view) {
+            super(view);
+            title = view.findViewById(R.id.title);
+
+        }
+    }
+
     @Override
     public PraysViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -30,14 +40,7 @@ public class PraysCategoriesAdapter extends FilterAdapter<PraysCategories, Prays
             holder.title.setText(praysCategories.getTitle());
     }
 
-    class PraysViewHolder extends RecyclerView.ViewHolder {
-        TextView title;
 
-        PraysViewHolder(View view) {
-            super(view);
-            title = view.findViewById(R.id.title);
-        }
-    }
 
     public PraysCategoriesAdapter(List<PraysCategories> praysCategoriesList){
         super(praysCategoriesList);

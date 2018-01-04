@@ -16,9 +16,9 @@ public abstract class FilterAdapter<T, THolder extends RecyclerView.ViewHolder>
     protected List<T> mList;
     protected List<T> mListFiltered;
 
-    public FilterAdapter(List<T> praysList) {
-        this.mList = praysList;
-        this.mListFiltered = praysList;
+    public FilterAdapter(List<T> list) {
+        this.mList = list;
+        this.mListFiltered = list;
     }
 
     @Override
