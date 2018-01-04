@@ -55,7 +55,7 @@ public abstract class FilterAdapter<T, THolder extends RecyclerView.ViewHolder>
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                mListFiltered = (ArrayList<T>) filterResults.values;
+                mListFiltered = (ArrayList<T>) filterResults.values; //https://stackoverflow.com/questions/14642985/type-safety-unchecked-cast-from-object-to-listmyobject
                 notifyDataSetChanged();
             }
         };

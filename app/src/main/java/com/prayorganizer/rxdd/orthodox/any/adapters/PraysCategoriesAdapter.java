@@ -49,21 +49,6 @@ public class PraysCategoriesAdapter extends FilterAdapter<PraysCategories, Prays
     }
 
 
-//    row.getTitle().toLowerCase().contains(charString.toLowerCase()) || row.getDesc().contains(charSequence)
-//        @Override
-//        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//            View itemView = LayoutInflater.from(parent.getContext())
-//                    .inflate(R.layout.prays_categories_list_row, parent, false);
-//
-//            return new MyViewHolder(itemView);
-//        }
-//
-//        @Override
-//        public void onBindViewHolder(MyViewHolder holder, int position) {
-//            PraysCategories movie = mListFiltered.get(position);
-//            holder.title.setText(movie.getTitle());
-//            holder.genre.setText(movie.getDesc());
-//        }
 }
 
 
