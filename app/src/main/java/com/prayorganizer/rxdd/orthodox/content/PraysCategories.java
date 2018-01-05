@@ -2,19 +2,19 @@ package com.prayorganizer.rxdd.orthodox.content;
 
 
 public class PraysCategories {
-    private String title, desc; //desk = img in future
+    private String title, imageId;
 
 
-    public PraysCategories(String title, String desc) {
+    public PraysCategories(String title, String imageName) {
         this.title = title;
-        this.desc = desc;
+        this.imageId = imageName;
     }
 
     public String getTitle() {
         return title;
     }
-    public String getDesc() {
-        return desc;
+    public String getImg() {
+        return imageId;
     }
 
 }
