@@ -12,18 +12,21 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.prayorganizer.rxdd.orthodox.R;
 import com.prayorganizer.rxdd.orthodox.settings.Settings;
+import com.prayorganizer.rxdd.orthodox.view.main.MainActivity;
 
 /**
  * Created by danbi on 04.01.2018.
  */
 
 public abstract class HolyActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
+    private static final String TAG = "HolyActivity";
+    protected int mCurrentItemId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,6 +52,8 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        mCurrentItemId = R.id.nav_prays;
+        navigationView.setCheckedItem(mCurrentItemId);
 
     }
 
@@ -85,27 +90,46 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        log("item id = " + id);
 
-//        FragmentTransaction ftr = getFragmentManager().beginTransaction();
-
-        if (id == R.id.nav_prays) {
-
-        } else if (id == R.id.nav_psalms) {
-
-        } else if (id == R.id.nav_icons) {
-
-        } else if (id == R.id.nav_pray_of_day) {
-
-        } else if (id == R.id.nav_recepts) {
-
-        } else if (id == R.id.nav_favorites) {
-
-        } else if (id == R.id.nav_map) {
-//            ftr.replace(R.id.container, fmap).commit();
+        if(id == mCurrentItemId){
+            DrawerLayout drawer = findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
         }
 
+        if (id == R.id.nav_prays) {
+            log("R.id.nav_prays = " + id);
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_psalms) {
+            log("R.id.nav_psalms = " + id);
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+
+        } else if (id == R.id.nav_icons) {
+            log("R.id.nav_icons = " + id);
+
+        } else if (id == R.id.nav_pray_of_day) {
+            log("R.id.nav_pray_of_day = " + id);
+
+        } else if (id == R.id.nav_recepts) {
+            log("R.id.nav_recepts = " + id);
+
+        } else if (id == R.id.nav_favorites) {
+            log("R.id.nav_favorites = " + id);
+
+        } else if (id == R.id.nav_map) {
+            log("R.id.nav_map = " + id);
+
+        }
+        mCurrentItemId = id;
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void log(String msg){
+        Log.i(TAG, msg);
     }
 }

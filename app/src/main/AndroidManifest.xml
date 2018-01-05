@@ -27,6 +27,7 @@
             android:name=".settings.Settings"
             android:label="Настройки">
         </activity>
+        <activity android:name=".view.PsalmActivity"/>
 
     </application>
 
