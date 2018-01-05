@@ -31,9 +31,7 @@ public class PraysCategoriesFragment extends FilteringListFragment
     private boolean mIsSlaveCategories;
 
 
-    public boolean isSlaveCategories() {
-    return mIsSlaveCategories;
-    }
+
 
 
 private @Nullable String mMasterCategory;
@@ -77,12 +75,13 @@ private @Nullable String mMasterCategory;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-            mIsSlaveCategories = savedInstanceState.getBoolean("isSlave");
-            mMasterCategory = savedInstanceState.getString("masterCategory");
+        Bundle args = getArguments();
+
+        if (args != null) {
+            mIsSlaveCategories = args.getBoolean("isSlave");
+            mMasterCategory = args.getString("masterCategory");
         }
         if(mIsSlaveCategories){
-
             mPraysCategories = HolyModel.getInstance().getSlaveCategoriesOfPrays(mMasterCategory);
         }else{
             mPraysCategories = HolyModel.getInstance().getMasterCategoriesOfPrays();

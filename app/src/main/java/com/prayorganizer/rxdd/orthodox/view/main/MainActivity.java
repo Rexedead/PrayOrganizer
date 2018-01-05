@@ -2,7 +2,6 @@ package com.prayorganizer.rxdd.orthodox.view.main;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 
 import com.prayorganizer.rxdd.orthodox.R;
 import com.prayorganizer.rxdd.orthodox.view.HolyActivity;
@@ -25,7 +24,7 @@ public class MainActivity extends HolyActivity implements PraysCategoriesFragmen
         FragmentManager fm = getSupportFragmentManager();
         PraysCategoriesFragment fragment = PraysCategoriesFragment.newInstance(false);
         fm.beginTransaction()
-                .add(R.id.fragment_container, fragment, "fragment1")
+                .add(R.id.fragment_container, fragment)
                 .commit();
 
     }
@@ -41,9 +40,11 @@ public class MainActivity extends HolyActivity implements PraysCategoriesFragmen
 
     private void showPraySlaveCategories(String masterCategories){
         PraysCategoriesFragment fragment = PraysCategoriesFragment.newInstance(true, masterCategories);
+
+
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction()
-                .replace(R.id.fragment_container, fragment, "fragment2")
+                .replace(R.id.fragment_container, fragment)
                 .commit();
     }
 
