@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.prayorganizer.rxdd.orthodox.AppContext;
 import com.prayorganizer.rxdd.orthodox.R;
 import com.prayorganizer.rxdd.orthodox.content.PraysCategories;
-import com.prayorganizer.rxdd.orthodox.view.fragments.PraysCategoriesFragment;
 
 import java.util.List;
 
@@ -24,12 +23,15 @@ public class PraysCategoriesAdapter extends FilterAdapter<PraysCategories, Prays
     static class PraysViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView title;
         ImageView img;
+        TextView tag;
+
         PraysViewHolderClick mListenerHolder;
         PraysViewHolder(View view, PraysViewHolderClick listener) {
             super(view);
             view.setOnClickListener(this);
             title = view.findViewById(R.id.title);
             img = view.findViewById(R.id.imageView);
+            tag = view.findViewById(R.id.tag);
             mListenerHolder = listener;
         }
 
@@ -60,8 +62,10 @@ public class PraysCategoriesAdapter extends FilterAdapter<PraysCategories, Prays
     public void onBindViewHolder(PraysViewHolder holder, int position) {
         PraysCategories praysCategories = mListFiltered.get(position);
             holder.title.setText(praysCategories.getTitle());
-            int imgName = AppContext.getAppContext().getResources().getIdentifier(praysCategories.getImg(), "drawable", AppContext.getAppContext().getPackageName());
+            int imgName = AppContext.getAppContext().getResources().getIdentifier(praysCategories.getImageId(), "drawable", AppContext.getAppContext().getPackageName());
             holder.img.setImageResource(imgName);
+            holder.tag.setText(praysCategories.getTag());
+
     }
 
 

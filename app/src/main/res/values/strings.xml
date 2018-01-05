@@ -19,5 +19,6 @@
     <string name="Preference1Title">Размер шрифта</string>
     <string name="Preference1Summary">Пожалуйста, выберите размер от 12 до 34</string>
     <string name="Preference1Format">%d sp</string>
+    <string name="categoryImage">categoryImage</string>
 
 </resources>

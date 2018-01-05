@@ -41,7 +41,8 @@ public class HolyModel {
                 PraysCategories prays_cats;
                 prays_cats = new PraysCategories(
                         cursor.getString(cursor.getColumnIndex(Columns.PRAY_MASTER_CATNAME)),
-                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_MASTER_IMAGE))
+                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_MASTER_IMAGE)),
+                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_MASTER_TAG))
                 );
                 praysMasterCategories.add(prays_cats);
 
