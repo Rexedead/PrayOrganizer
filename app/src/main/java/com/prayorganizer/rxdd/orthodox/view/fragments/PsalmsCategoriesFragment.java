@@ -42,4 +42,5 @@ public class PsalmsCategoriesFragment extends FilteringListFragment {
     protected int getIdRecyclerView() {
         return R.id.psalms_categories_recycler_view;
     }
+
 }
