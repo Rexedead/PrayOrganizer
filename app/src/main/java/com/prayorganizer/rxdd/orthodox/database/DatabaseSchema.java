@@ -29,6 +29,7 @@ class DatabaseSchema {
         static final String CAT_ID = "_cat_id";
         static final String PRAY_MASTER_ID = "_master_id";
         static final String PRAY_MASTER_IMAGE = "img_master";
+        static final String PRAY_MASTER_TAG = "tag_master";
         static final String PRAY_MASTER_CATNAME = "cat_master";
         static final String PRAY_SLAVE_ID = "_slave_id";
         static final String PRAY_SLAVE_CATNAME = "cat_slave";
