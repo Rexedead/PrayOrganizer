@@ -142,6 +142,7 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
         return true;
     }
 
+
     private void start(Class clazz, int id){
         Intent intent = new Intent(this , clazz);
         intent.putExtra(EXTRA_KEY_ITEM_ID, id);
