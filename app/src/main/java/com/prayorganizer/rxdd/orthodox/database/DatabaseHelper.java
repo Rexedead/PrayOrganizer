@@ -22,7 +22,7 @@ import static android.content.ContentValues.TAG;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
     private static final String DATABASE_NAME = "Orthodox.db3";
     private static final String SP_KEY_DB_VER = "db_ver";
     private SQLiteDatabase mDatabase;

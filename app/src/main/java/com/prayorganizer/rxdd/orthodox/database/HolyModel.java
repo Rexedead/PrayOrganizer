@@ -55,18 +55,27 @@ public class HolyModel {
 
     public List<PraysCategories> getSlaveCategoriesOfPrays(String masterCategory) {
         List<PraysCategories> praysSlaveCategories = new ArrayList<>();
+        String masterId ="";
         String masterIdQuery =
                 "SELECT " + Columns.PRAY_MASTER_ID +
                 " FROM " + Tables.PRAYS_MASTER +
-                " WHERE " + Tables.PRAYS_MASTER + "." + Columns.PRAY_MASTER_CATNAME + "=" + masterCategory;
+                " WHERE " + Tables.PRAYS_MASTER + "." + Columns.PRAY_MASTER_CATNAME + "='" + masterCategory+"'";
         mDatabaseHelper.openDB();
         Cursor cursor = mDatabaseHelper.getCursor(masterIdQuery);
-        String masterId = cursor.getString(Integer.parseInt(Columns.PRAY_MASTER_ID));
+
+        if (cursor.moveToFirst()) {
+            do {
+                masterId = cursor.getString(cursor.getColumnIndex(Columns.PRAY_MASTER_ID));
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+
+
         String selectQuery =
-                "SELECT " + Columns.PRAY_SLAVE_CATNAME +
+                "SELECT " + Columns.PRAY_SLAVE_CATNAME+"," +Columns.PRAY_SLAVE_IMAGE+
                 " FROM " + Tables.PRAYS_SLAVE +
                 " LEFT JOIN " + Tables.PRAYS_CATS +
-                " ON " + Tables.PRAYS_SLAVE + "." + Columns.PRAY_SLAVE_ID + "=" + Tables.PRAYS_CATS + "." + Columns.PRAY_MASTER_ID +
+                " ON " + Tables.PRAYS_SLAVE + "." + Columns.PRAY_SLAVE_ID + "=" + Tables.PRAYS_CATS + "." + Columns.PRAY_SLAVE_ID +
                 " WHERE " + Tables.PRAYS_CATS + "." + Columns.PRAY_MASTER_ID + "=" + masterId;
 
 
@@ -75,8 +84,8 @@ public class HolyModel {
             do {
                 PraysCategories prays_cats;
                 prays_cats = new PraysCategories(
-                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_MASTER_CATNAME)),
-                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_MASTER_ID))
+                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_SLAVE_CATNAME)),
+                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_SLAVE_IMAGE))
                 );
                 praysSlaveCategories.add(prays_cats);
             } while (cursor.moveToNext());
