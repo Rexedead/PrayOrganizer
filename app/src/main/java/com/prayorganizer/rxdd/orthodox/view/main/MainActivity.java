@@ -45,6 +45,7 @@ public class MainActivity extends HolyActivity implements PraysCategoriesFragmen
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null)
                 .commit();
     }
 

@@ -95,7 +95,7 @@ public class HolyModel {
         return praysSlaveCategories;
     }
 
-    public List<Pray> getSinglePray(String slaveCategory) {
+    public List<Pray> getPrays(String slaveCategory) {
         List<Pray> praysText = new ArrayList<>();
         String slaveIdQuery = "SELECT " + Columns.PRAY_SLAVE_ID +
                 " FROM " + Tables.PRAYS_SLAVE +

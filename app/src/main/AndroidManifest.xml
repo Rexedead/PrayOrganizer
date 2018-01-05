@@ -27,7 +27,9 @@
             android:name=".settings.Settings"
             android:label="Настройки">
         </activity>
-        <activity android:name=".view.PsalmActivity"/>
+        <activity
+            android:name=".view.PsalmActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>
 

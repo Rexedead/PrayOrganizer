@@ -26,6 +26,8 @@ import com.prayorganizer.rxdd.orthodox.view.main.MainActivity;
 
 public abstract class HolyActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "HolyActivity";
+
+    public static final String EXTRA_KEY_ITEM_ID = "item_id";
     protected int mCurrentItemId;
 
     @Override
@@ -33,6 +35,8 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
+
+
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -52,7 +56,13 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        mCurrentItemId = R.id.nav_prays;
+
+        Intent argsIntent = getIntent();
+        if(argsIntent != null ){
+            mCurrentItemId = argsIntent.getIntExtra(EXTRA_KEY_ITEM_ID, R.id.nav_prays);
+        }else{
+            mCurrentItemId = R.id.nav_prays;
+        }
         navigationView.setCheckedItem(mCurrentItemId);
 
     }
@@ -99,13 +109,12 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
         }
 
         if (id == R.id.nav_prays) {
+
             log("R.id.nav_prays = " + id);
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            start(MainActivity.class, id);
         } else if (id == R.id.nav_psalms) {
             log("R.id.nav_psalms = " + id);
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            start(PsalmActivity.class, id);
 
         } else if (id == R.id.nav_icons) {
             log("R.id.nav_icons = " + id);
@@ -123,10 +132,21 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
             log("R.id.nav_map = " + id);
 
         }
-        mCurrentItemId = id;
+
+        //костыль
+        if(mCurrentItemId != R.id.nav_prays){
+            finish();
+        }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void start(Class clazz, int id){
+        Intent intent = new Intent(this , clazz);
+        intent.putExtra(EXTRA_KEY_ITEM_ID, id);
+        startActivity(intent);
+
     }
 
     private void log(String msg){
