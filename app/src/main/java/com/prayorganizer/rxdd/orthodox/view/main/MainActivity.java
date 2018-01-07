@@ -81,6 +81,12 @@ public class MainActivity extends HolyActivity implements PraysCategoriesFragmen
 
     }
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
     //    private void showPsalmsCategories(){
 //        PsalmsCategoriesFragment fragment = new PsalmsCategoriesFragment();
 //        FragmentManager fm = getSupportFragmentManager();

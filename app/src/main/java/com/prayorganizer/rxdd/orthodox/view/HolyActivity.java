@@ -73,6 +73,15 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+
+            if(this.getClass() == MainActivity.class){
+                log("onBackPressed()" + "MainActivity");
+            }
+
+            if(this.getClass() == PsalmActivity.class){
+                log("onBackPressed() " + "PsalmActivity" );
+            }
+
             super.onBackPressed();
         }
     }
@@ -142,15 +151,15 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
         return true;
     }
 
-
     private void start(Class clazz, int id){
         Intent intent = new Intent(this , clazz);
         intent.putExtra(EXTRA_KEY_ITEM_ID, id);
-        startActivity(intent);
 
+        startActivity(intent);
     }
 
     private void log(String msg){
         Log.i(TAG, msg);
     }
+
 }
