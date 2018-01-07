@@ -15,8 +15,7 @@ import java.util.List;
  * Created by danbi on 03.01.2018.
  */
 
-public class PsalmsCategoriesAdapter
-        extends FilterAdapter<PsalmsCategories, PsalmsCategoriesAdapter.PsalmsViewHolder> {
+public class PsalmsCategoriesAdapter extends FilterAdapter<PsalmsCategories, PsalmsCategoriesAdapter.PsalmsViewHolder> {
 
     public PsalmsCategoriesAdapter(List<PsalmsCategories> praysList) {
         super(praysList);
@@ -31,7 +30,7 @@ public class PsalmsCategoriesAdapter
     @Override
     public PsalmsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.categories_list_row, parent, false);
+                .inflate(R.layout.categories_list_row_pray, parent, false);
         return new PsalmsViewHolder(itemView);
     }
 

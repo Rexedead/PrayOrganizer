@@ -14,7 +14,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imagePrayRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/categoryImage" />
@@ -26,19 +26,23 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/imageView"
-        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imagePrayRow"
+        android:layout_toRightOf="@+id/imagePrayRow"
         android:textColor="@color/title"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin" />
 
     <TextView
         android:id="@+id/tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title"
-        android:layout_toEndOf="@+id/imageView"
-        android:layout_toRightOf="@+id/imageView" />
+        android:layout_toEndOf="@+id/imagePrayRow"
+        android:layout_toRightOf="@+id/imagePrayRow"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin"/>
 
 
 </RelativeLayout>
