@@ -8,6 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.prayorganizer.rxdd.orthodox.R;
+import com.prayorganizer.rxdd.orthodox.content.Pray;
+
+import java.util.List;
 
 /**
  * Created by Rexedead on 07.01.2018.
@@ -15,6 +18,13 @@ import com.prayorganizer.rxdd.orthodox.R;
 
 public class PrayAdapter extends RecyclerView.Adapter<PrayAdapter.PrayViewHolder> {
 
+
+    private List <Pray> prayList;
+
+    public PrayAdapter(List<Pray> prayList) {
+        this.prayList = prayList;
+//        super(prayList);
+    }
 
     public class PrayViewHolder extends RecyclerView.ViewHolder {
         TextView text;
@@ -38,12 +48,13 @@ public class PrayAdapter extends RecyclerView.Adapter<PrayAdapter.PrayViewHolder
 
     @Override
     public void onBindViewHolder(PrayViewHolder holder, int position) {
-
+        holder.text.setText(prayList.get(position).getText());
+        holder.header.setText(prayList.get(position).getHead());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return prayList.size();
     }
 
 

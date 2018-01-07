@@ -22,7 +22,7 @@ class DatabaseSchema {
     }
     static final class Columns {
         static final String PRAY_ID = "_pray_id";
-        static final String PRAY_TEXT = "praytext";
+        static final String PRAY_TEXT = "pray_text";
         static final String PRAY_TITLE = "pray_title";
         static final String PRAY_FAV = "pray_fav";
         static final String PRAY_TAG = "pray_tags";

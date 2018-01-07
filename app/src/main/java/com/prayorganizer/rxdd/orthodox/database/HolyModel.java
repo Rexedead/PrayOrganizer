@@ -117,8 +117,9 @@ public class HolyModel {
             do {
                 Pray pray_single;
                 pray_single = new Pray(
-                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_MASTER_CATNAME)),
-                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_FAV))
+                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_TEXT)),
+                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_FAV)),
+                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_TITLE))
                 );
                 praysText.add(pray_single);
             } while (cursor.moveToNext());

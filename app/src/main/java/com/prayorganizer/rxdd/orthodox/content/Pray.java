@@ -8,13 +8,7 @@ package com.prayorganizer.rxdd.orthodox.content;
 public class Pray {
     private String text;
     private String fav;
-
-
-    public Pray(String text, String fav) {
-        this.text = text;
-        this.fav = fav;
-
-    }
+    private String head;
 
     public String getText() {
         return text;
@@ -24,4 +18,14 @@ public class Pray {
         return fav;
     }
 
+    public String getHead() {
+        return head;
+    }
+
+    public Pray(String text, String fav, String head) {
+
+        this.text = text;
+        this.fav = fav;
+        this.head = head;
+    }
 }
