@@ -30,7 +30,7 @@ public class PraysCategoriesAdapter extends FilterAdapter<PraysCategories, Prays
             super(view);
             view.setOnClickListener(this);
             title = view.findViewById(R.id.title);
-            img = view.findViewById(R.id.imageView);
+            img = view.findViewById(R.id.imagePrayRow);
             tag = view.findViewById(R.id.tag);
             mListenerHolder = listener;
         }
@@ -48,7 +48,7 @@ public class PraysCategoriesAdapter extends FilterAdapter<PraysCategories, Prays
     @Override
     public PraysViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.categories_list_row, parent, false);
+                    .inflate(R.layout.categories_list_row_pray, parent, false);
 
         return new PraysViewHolder(itemView, new PraysViewHolder.PraysViewHolderClick() {
             @Override
@@ -77,7 +77,7 @@ public class PraysCategoriesAdapter extends FilterAdapter<PraysCategories, Prays
 
     @Override
     protected boolean filter(String str, PraysCategories obj) {
-        return obj.getTitle().toLowerCase().contains(str.toLowerCase());
+            return obj.getTag()!=null ? obj.getTitle().toLowerCase().contains(str.toLowerCase()) || obj.getTag().toLowerCase().contains(str.toLowerCase()) : obj.getTitle().toLowerCase().contains(str.toLowerCase());
     }
 
 

@@ -105,7 +105,7 @@ public class HolyModel {
         Cursor cursor = mDatabaseHelper.getCursor(slaveIdQuery);
         String slaveId = cursor.getString(Integer.parseInt(Columns.PRAY_SLAVE_ID));
 
-        String selectQuery = "SELECT " + Columns.PRAY_TEXT +
+        String selectQuery = "SELECT *"+
                 " FROM " + Tables.PRAYS_MAIN +
                 " LEFT JOIN " + Tables.PRAYS_CATS +
                 " ON " + Tables.PRAYS_MAIN + "." + Columns.PRAY_ID + "=" + Tables.PRAYS_CATS + "." + Columns.PRAY_SLAVE_ID +
@@ -117,7 +117,8 @@ public class HolyModel {
             do {
                 Pray pray_single;
                 pray_single = new Pray(
-                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_MASTER_CATNAME))
+                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_MASTER_CATNAME)),
+                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_FAV))
                 );
                 praysText.add(pray_single);
             } while (cursor.moveToNext());
