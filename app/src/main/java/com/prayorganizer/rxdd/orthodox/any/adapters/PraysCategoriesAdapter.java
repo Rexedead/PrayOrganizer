@@ -31,7 +31,7 @@ public class PraysCategoriesAdapter extends FilterAdapter<PraysCategories, Prays
             view.setOnClickListener(this);
             title = view.findViewById(R.id.title);
             img = view.findViewById(R.id.imagePrayRow);
-            tag = view.findViewById(R.id.tag);
+            tag = view.findViewById(R.id.tag_pray);
             mListenerHolder = listener;
         }
 
@@ -48,7 +48,7 @@ public class PraysCategoriesAdapter extends FilterAdapter<PraysCategories, Prays
     @Override
     public PraysViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.categories_list_row_pray, parent, false);
+                    .inflate(R.layout.categories_pray_row, parent, false);
 
         return new PraysViewHolder(itemView, new PraysViewHolder.PraysViewHolderClick() {
             @Override

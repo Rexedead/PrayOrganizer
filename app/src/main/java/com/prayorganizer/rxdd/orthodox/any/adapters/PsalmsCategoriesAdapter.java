@@ -30,7 +30,7 @@ public class PsalmsCategoriesAdapter extends FilterAdapter<PsalmsCategories, Psa
     @Override
     public PsalmsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.categories_list_row_pray, parent, false);
+                .inflate(R.layout.categories_psalms_row, parent, false);
         return new PsalmsViewHolder(itemView);
     }
 
@@ -45,7 +45,7 @@ public class PsalmsCategoriesAdapter extends FilterAdapter<PsalmsCategories, Psa
 
         public PsalmsViewHolder(View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.title);
+            title = itemView.findViewById(R.id.title_psalm);
         }
 
     }
