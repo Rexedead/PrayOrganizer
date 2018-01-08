@@ -28,7 +28,7 @@ public class PsalmActivity extends HolyActivity {
 
     private void init(){
         FragmentManager fm = getSupportFragmentManager();
-        PsalmTabsFragment fragment = new PsalmTabsFragment();
+        PsalmsCategoriesFragment fragment = new PsalmsCategoriesFragment();
         fm.beginTransaction()
                 .add(R.id.fragment_container, fragment)
                 .commit();
