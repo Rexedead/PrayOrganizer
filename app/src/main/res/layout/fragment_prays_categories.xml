@@ -4,4 +4,5 @@
     android:id="@+id/prays_categories_recycler_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:scrollbars="vertical" />
+    android:scrollbars="vertical"
+    />

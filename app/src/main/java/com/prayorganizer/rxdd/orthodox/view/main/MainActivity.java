@@ -7,8 +7,10 @@ import com.prayorganizer.rxdd.orthodox.R;
 import com.prayorganizer.rxdd.orthodox.view.HolyActivity;
 import com.prayorganizer.rxdd.orthodox.view.fragments.PraysCategoriesFragment;
 
+//TODO должен ли текст и тег делать отступ от картинки/у картинки делать паддинг-райт или это можно реализовать по другому?
+//TODO Табуляция псалмов
+//TODO icons
 
-//TODO Psalm
 public class MainActivity extends HolyActivity implements PraysCategoriesFragment.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
