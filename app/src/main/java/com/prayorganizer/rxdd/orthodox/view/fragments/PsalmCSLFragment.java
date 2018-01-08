@@ -11,11 +11,12 @@ import com.prayorganizer.rxdd.orthodox.R;
  *
  */
 
-public class PsalmNewFragment extends Fragment {
+public class PsalmCSLFragment extends Fragment {
 
-    public PsalmNewFragment() {
+    public PsalmCSLFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class PsalmNewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_psalm_single_new, container, false);
+        return inflater.inflate(R.layout.fragment_psalm_single_old, container, false);
     }
 
 }

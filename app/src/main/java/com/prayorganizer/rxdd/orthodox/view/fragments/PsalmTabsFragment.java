@@ -7,7 +7,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.prayorganizer.rxdd.orthodox.R;
 
@@ -22,21 +24,28 @@ public class PsalmTabsFragment extends Fragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.psalm_tab_coordinator, container, false);
+        viewPager = view.findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+        tabLayout = view.findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+        return view;
+
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewPager = getView().findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
-        tabLayout = getView().findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
     }
 
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
-        adapter.addFragment(new PsalmNewFragment(), "ONE");
-        adapter.addFragment(new PsalmOldFragment(), "TWO");
+        adapter.addFragment(new PsalmRUFragment(), "ONE");
+        adapter.addFragment(new PsalmCSLFragment(), "TWO");
         viewPager.setAdapter(adapter);
     }
 
