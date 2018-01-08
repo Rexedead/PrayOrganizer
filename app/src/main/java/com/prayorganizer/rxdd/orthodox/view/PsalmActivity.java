@@ -1,12 +1,11 @@
 package com.prayorganizer.rxdd.orthodox.view;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 
 import com.prayorganizer.rxdd.orthodox.R;
-import com.prayorganizer.rxdd.orthodox.view.fragments.PraysCategoriesFragment;
-import com.prayorganizer.rxdd.orthodox.view.fragments.PsalmTabsFragment;
 import com.prayorganizer.rxdd.orthodox.view.fragments.PsalmsCategoriesFragment;
 
 /**
@@ -14,7 +13,7 @@ import com.prayorganizer.rxdd.orthodox.view.fragments.PsalmsCategoriesFragment;
  */
 
 
-public class PsalmActivity extends HolyActivity {
+public class PsalmActivity extends HolyActivity implements PsalmsCategoriesFragment.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,5 +40,14 @@ public class PsalmActivity extends HolyActivity {
     }
 
 
+    private void showPsalm(String psalmCategories){
+        Intent intent = new Intent(this, PsalmTabsActivity.class);
+        startActivity(intent);
+    }
 
+
+    @Override
+    public void onClickPsalmCategories(String title) {
+        showPsalm(title);
+    }
 }

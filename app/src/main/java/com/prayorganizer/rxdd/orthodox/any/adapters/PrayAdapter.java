@@ -17,6 +17,7 @@ import java.util.List;
  */
 
 public class PrayAdapter extends RecyclerView.Adapter<PrayAdapter.PrayViewHolder> {
+
     private List <Pray> prayList;
 
     public PrayAdapter(List<Pray> prayList) {

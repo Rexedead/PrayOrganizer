@@ -1,42 +1,54 @@
-package com.prayorganizer.rxdd.orthodox.view.fragments;
+package com.prayorganizer.rxdd.orthodox.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-
+import android.view.View;
+import android.widget.FrameLayout;
 
 import com.prayorganizer.rxdd.orthodox.R;
+import com.prayorganizer.rxdd.orthodox.view.HolyActivity;
+import com.prayorganizer.rxdd.orthodox.view.fragments.PsalmCSLFragment;
+import com.prayorganizer.rxdd.orthodox.view.fragments.PsalmRUFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Rexedead on 08.01.2018.
+ * Created by danbi on 08.01.2018.
  */
 
-public class PsalmTabsFragment extends Fragment {
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+public class PsalmTabsActivity extends HolyActivity {
 
+    private TabLayout mTabLayout;
+    private ViewPager mViewPager;
+    FrameLayout  mFrameLayout;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewPager = getView().findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
-        tabLayout = getView().findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+
+        FrameLayout frameLayout = findViewById(R.id.fragment_container);
+        View view = getLayoutInflater().inflate(R.layout.psalm_tab_coordinator, frameLayout);
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.hide();
+
+        mViewPager = view.findViewById(R.id.psalm_view_pager);
+        setupViewPager(mViewPager);
+        mTabLayout = view.findViewById(R.id.tabs_psalm_tab_layout);
+        mTabLayout.setupWithViewPager(mViewPager);
+        
     }
 
-
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
-//        adapter.addFragment(new PsalmNewFragment(), "ONE");
-//        adapter.addFragment(new PsalmOldFragment(), "TWO");
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new PsalmRUFragment(), "ONE");
+        adapter.addFragment(new PsalmCSLFragment(), "TWO");
         viewPager.setAdapter(adapter);
     }
 
@@ -68,5 +80,9 @@ public class PsalmTabsFragment extends Fragment {
             return mFragmentTitleList.get(position);
         }
     }
-}
 
+    @Override
+    protected int getNavigationId() {
+        return R.id.nav_psalms;
+    }
+}

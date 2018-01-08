@@ -17,8 +17,14 @@ import java.util.List;
 
 public class PsalmsCategoriesAdapter extends FilterAdapter<PsalmsCategories, PsalmsCategoriesAdapter.PsalmsViewHolder> {
 
-    public PsalmsCategoriesAdapter(List<PsalmsCategories> praysList) {
+    private PsalmCategoriesAdapterItemClick mListener;
+    public interface PsalmCategoriesAdapterItemClick {
+        void onClick(View view, String title);
+    }
+
+    public PsalmsCategoriesAdapter(List<PsalmsCategories> praysList, PsalmCategoriesAdapterItemClick listener) {
         super(praysList);
+        mListener = listener;
 
     }
 
@@ -31,7 +37,7 @@ public class PsalmsCategoriesAdapter extends FilterAdapter<PsalmsCategories, Psa
     public PsalmsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.categories_psalms_row, parent, false);
-        return new PsalmsViewHolder(itemView);
+        return new PsalmsViewHolder(itemView, mListener);
     }
 
     @Override
@@ -40,13 +46,21 @@ public class PsalmsCategoriesAdapter extends FilterAdapter<PsalmsCategories, Psa
         holder.title.setText(psalmsCategories.getTitle());
     }
 
-    class PsalmsViewHolder extends RecyclerView.ViewHolder{
+    static class PsalmsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView title;
+        PsalmCategoriesAdapterItemClick mListener;
 
-        public PsalmsViewHolder(View itemView) {
+        public PsalmsViewHolder(View itemView, PsalmCategoriesAdapterItemClick listener) {
             super(itemView);
+            itemView.setOnClickListener(this);
             title = itemView.findViewById(R.id.title_psalm);
+            mListener = listener;
         }
 
+
+        @Override
+        public void onClick(View v) {
+            mListener.onClick(v, title.getText().toString());
+        }
     }
 }

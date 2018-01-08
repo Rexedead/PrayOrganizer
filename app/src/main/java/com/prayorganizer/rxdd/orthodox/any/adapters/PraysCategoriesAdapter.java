@@ -78,7 +78,10 @@ public class PraysCategoriesAdapter extends FilterAdapter<PraysCategories, Prays
 
     @Override
     protected boolean filter(String str, PraysCategories obj) {
-            return obj.getTag()!=null ? obj.getTitle().toLowerCase().contains(str.toLowerCase()) || obj.getTag().toLowerCase().contains(str.toLowerCase()) : obj.getTitle().toLowerCase().contains(str.toLowerCase());
+            return obj.getTag()!=null ?
+                    obj.getTitle().toLowerCase().contains(str.toLowerCase()) ||
+                    obj.getTag().toLowerCase().contains(str.toLowerCase()) :
+                    obj.getTitle().toLowerCase().contains(str.toLowerCase());
     }
 
 

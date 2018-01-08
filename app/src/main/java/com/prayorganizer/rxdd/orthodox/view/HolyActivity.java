@@ -37,7 +37,7 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
 
-
+        
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -73,8 +73,8 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
 //                log("onBackPressed()" + "MainActivity");
 //            }
 //
-//            if(this.getClass() == PsalmActivity.class){
-//                log("onBackPressed() " + "PsalmActivity" );
+//            if(this.getClass() == PsalmTabsActivity.class){
+//                log("onBackPressed() " + "PsalmTabsActivity" );
 //            }
 
             super.onBackPressed();

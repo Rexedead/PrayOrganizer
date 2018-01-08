@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import com.prayorganizer.rxdd.orthodox.R;
 import com.prayorganizer.rxdd.orthodox.view.HolyActivity;
 import com.prayorganizer.rxdd.orthodox.view.fragments.PraysCategoriesFragment;
+import com.prayorganizer.rxdd.orthodox.view.fragments.PraysFragment;
 
 //TODO должен ли текст и тег делать отступ от картинки/у картинки делать паддинг-райт или это можно реализовать по другому?
 //TODO Табуляция псалмов
@@ -55,6 +56,16 @@ public class MainActivity extends HolyActivity implements PraysCategoriesFragmen
                 .commit();
     }
 
+    private void showPrays(String slaveCategories){
+        PraysFragment fragment = PraysFragment.newInstance(slaveCategories);
+
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
 //OnClickListener interface PraysCategoriesFragment
 //    @Override
 //    public void onClickCategories(String masterCategories) {
@@ -84,7 +95,7 @@ public class MainActivity extends HolyActivity implements PraysCategoriesFragmen
 
     @Override
     public void onClickSlaveCategories(String slaveCategories) {
-
+        showPrays(slaveCategories);
     }
 
 

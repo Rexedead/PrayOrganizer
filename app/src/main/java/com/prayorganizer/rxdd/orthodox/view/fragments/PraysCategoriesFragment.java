@@ -32,8 +32,6 @@ public class PraysCategoriesFragment extends FilteringListFragment
 
 
 
-
-
 private @Nullable String mMasterCategory;
 
     private PraysCategoriesAdapter mAdapter;
@@ -116,6 +114,8 @@ private @Nullable String mMasterCategory;
     public void onClick(View view, String title) {
         if(!mIsSlaveCategories){
             mOnClickListener.onClickCategories(title);
+        }else{
+            mOnClickListener.onClickSlaveCategories(title);
         }
     }
 }
