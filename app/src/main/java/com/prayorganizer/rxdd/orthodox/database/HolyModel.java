@@ -3,6 +3,7 @@ package com.prayorganizer.rxdd.orthodox.database;
 import android.database.Cursor;
 
 import com.prayorganizer.rxdd.orthodox.AppContext;
+import com.prayorganizer.rxdd.orthodox.content.IconsMain;
 import com.prayorganizer.rxdd.orthodox.content.Pray;
 import com.prayorganizer.rxdd.orthodox.content.PraysCategories;
 import com.prayorganizer.rxdd.orthodox.content.Psalm;
@@ -186,6 +187,12 @@ public class HolyModel {
         mDatabaseHelper.close();
         return psalmText;
     }
-    
 
+
+    public List<IconsMain> getIconsData() {
+        List<IconsMain> mm = new ArrayList<>();
+        IconsMain m = new IconsMain("ss");
+        mm.add(m);
+        return mm;
+    }
 }

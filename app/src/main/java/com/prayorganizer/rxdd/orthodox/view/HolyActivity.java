@@ -124,7 +124,7 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
 
         } else if (id == R.id.nav_icons) {
             log("R.id.nav_icons = " + id);
-
+            start(IconActivity.class, id);
         } else if (id == R.id.nav_pray_of_day) {
             log("R.id.nav_pray_of_day = " + id);
 

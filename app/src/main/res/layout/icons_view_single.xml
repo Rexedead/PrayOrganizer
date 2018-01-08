@@ -24,7 +24,7 @@
                 android:scaleType="fitXY" />
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/title_img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/thumbnail"
@@ -35,7 +35,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/count"
+                android:id="@+id/desc_img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/title"
