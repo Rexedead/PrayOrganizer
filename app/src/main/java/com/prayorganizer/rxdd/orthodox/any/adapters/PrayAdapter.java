@@ -42,7 +42,7 @@ public class PrayAdapter extends RecyclerView.Adapter<PrayAdapter.PrayViewHolder
     @Override
     public PrayViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_pray_single, parent, false);
+                .inflate(R.layout.fragment_prays_categories, parent, false);
         return new PrayAdapter.PrayViewHolder(itemView);
     }
 
