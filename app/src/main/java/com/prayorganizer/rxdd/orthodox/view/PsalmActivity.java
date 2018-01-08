@@ -26,6 +26,11 @@ public class PsalmActivity extends HolyActivity {
 
     }
 
+    @Override
+    protected int getNavigationId() {
+        return R.id.nav_psalms;
+    }
+
     private void init(){
         FragmentManager fm = getSupportFragmentManager();
         PsalmsCategoriesFragment fragment = new PsalmsCategoriesFragment();

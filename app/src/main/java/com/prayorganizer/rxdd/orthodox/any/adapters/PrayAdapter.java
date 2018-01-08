@@ -17,13 +17,10 @@ import java.util.List;
  */
 
 public class PrayAdapter extends RecyclerView.Adapter<PrayAdapter.PrayViewHolder> {
-
-
     private List <Pray> prayList;
 
     public PrayAdapter(List<Pray> prayList) {
         this.prayList = prayList;
-//        super(prayList);
     }
 
     public class PrayViewHolder extends RecyclerView.ViewHolder {

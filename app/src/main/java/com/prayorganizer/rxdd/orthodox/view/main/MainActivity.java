@@ -22,6 +22,11 @@ public class MainActivity extends HolyActivity implements PraysCategoriesFragmen
 
     }
 
+    @Override
+    protected int getNavigationId() {
+        return R.id.nav_prays;
+    }
+
     private void init(){
         FragmentManager fm = getSupportFragmentManager();
         PraysCategoriesFragment fragment = PraysCategoriesFragment.newInstance(false);
@@ -42,7 +47,6 @@ public class MainActivity extends HolyActivity implements PraysCategoriesFragmen
 
     private void showPraySlaveCategories(String masterCategories){
         PraysCategoriesFragment fragment = PraysCategoriesFragment.newInstance(true, masterCategories);
-
 
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction()

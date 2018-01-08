@@ -15,6 +15,7 @@ import java.util.List;
 
 public class PraysCategoriesAdapter extends FilterAdapter<PraysCategories, PraysCategoriesAdapter.PraysViewHolder> {
 
+
     private PraysCategoriesAdapterItemClick mListener;
     public interface PraysCategoriesAdapterItemClick {
         void onClick(View view, String title);

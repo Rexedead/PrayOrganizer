@@ -1,5 +1,6 @@
 package com.prayorganizer.rxdd.orthodox.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -27,8 +28,8 @@ import com.prayorganizer.rxdd.orthodox.view.main.MainActivity;
 public abstract class HolyActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "HolyActivity";
 
-    public static final String EXTRA_KEY_ITEM_ID = "item_id";
-    protected int mCurrentItemId;
+//    public static final String EXTRA_KEY_ITEM_ID = "item_id";
+    private NavigationView mNavigationView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,18 +55,12 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        Intent argsIntent = getIntent();
-        if(argsIntent != null ){
-            mCurrentItemId = argsIntent.getIntExtra(EXTRA_KEY_ITEM_ID, R.id.nav_prays);
-        }else{
-            mCurrentItemId = R.id.nav_prays;
-        }
-        navigationView.setCheckedItem(mCurrentItemId);
+        mNavigationView = findViewById(R.id.nav_view);
+        mNavigationView.setNavigationItemSelectedListener(this);
 
     }
+
+    protected abstract int getNavigationId();
 
     @Override
     public void onBackPressed() {
@@ -74,13 +69,13 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
             drawer.closeDrawer(GravityCompat.START);
         } else {
 
-            if(this.getClass() == MainActivity.class){
-                log("onBackPressed()" + "MainActivity");
-            }
-
-            if(this.getClass() == PsalmActivity.class){
-                log("onBackPressed() " + "PsalmActivity" );
-            }
+//            if(this.getClass() == MainActivity.class){
+//                log("onBackPressed()" + "MainActivity");
+//            }
+//
+//            if(this.getClass() == PsalmActivity.class){
+//                log("onBackPressed() " + "PsalmActivity" );
+//            }
 
             super.onBackPressed();
         }
@@ -104,6 +99,12 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mNavigationView.setCheckedItem(getNavigationId());
+
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -111,11 +112,7 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
         int id = item.getItemId();
         log("item id = " + id);
 
-        if(id == mCurrentItemId){
-            DrawerLayout drawer = findViewById(R.id.drawer_layout);
-            drawer.closeDrawer(GravityCompat.START);
-            return true;
-        }
+
 
         if (id == R.id.nav_prays) {
 
@@ -142,10 +139,11 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
 
         }
 
-        //костыль
-        if(mCurrentItemId != R.id.nav_prays){
+        if(this.getClass() != MainActivity.class){
             finish();
         }
+
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -153,7 +151,7 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
 
     private void start(Class clazz, int id){
         Intent intent = new Intent(this , clazz);
-        intent.putExtra(EXTRA_KEY_ITEM_ID, id);
+//        intent.putExtra(EXTRA_KEY_ITEM_ID, id);
 
         startActivity(intent);
     }
