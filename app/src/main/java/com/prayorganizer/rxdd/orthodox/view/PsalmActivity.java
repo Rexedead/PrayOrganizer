@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.prayorganizer.rxdd.orthodox.R;
 import com.prayorganizer.rxdd.orthodox.view.fragments.PraysCategoriesFragment;
+import com.prayorganizer.rxdd.orthodox.view.fragments.PsalmTabsFragment;
 import com.prayorganizer.rxdd.orthodox.view.fragments.PsalmsCategoriesFragment;
 
 /**
@@ -27,7 +28,7 @@ public class PsalmActivity extends HolyActivity {
 
     private void init(){
         FragmentManager fm = getSupportFragmentManager();
-        PsalmsCategoriesFragment fragment = new PsalmsCategoriesFragment();
+        PsalmTabsFragment fragment = new PsalmTabsFragment();
         fm.beginTransaction()
                 .add(R.id.fragment_container, fragment)
                 .commit();
