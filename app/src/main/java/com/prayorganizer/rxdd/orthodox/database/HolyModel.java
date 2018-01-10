@@ -101,18 +101,25 @@ public class HolyModel {
         List<Pray> praysText = new ArrayList<>();
         String slaveIdQuery = "SELECT " + Columns.PRAY_SLAVE_ID +
                 " FROM " + Tables.PRAYS_SLAVE +
-                " WHERE " + Tables.PRAYS_SLAVE + "." + Columns.PRAY_SLAVE_CATNAME + "=" + slaveCategory;
+                " WHERE " + Tables.PRAYS_SLAVE + "." + Columns.PRAY_SLAVE_CATNAME + "='" + slaveCategory+"'";
         mDatabaseHelper.openDB();
         Cursor cursor = mDatabaseHelper.getCursor(slaveIdQuery);
-        String slaveId = cursor.getString(Integer.parseInt(Columns.PRAY_SLAVE_ID));
-
+        String slaveId = "0";
+        if (cursor.moveToFirst()) {
+            do {
+                slaveId = cursor.getString(cursor.getColumnIndex(Columns.PRAY_SLAVE_ID));
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        
+        System.out.println(slaveId);
         String selectQuery = "SELECT *"+
                 " FROM " + Tables.PRAYS_MAIN +
                 " LEFT JOIN " + Tables.PRAYS_CATS +
                 " ON " + Tables.PRAYS_MAIN + "." + Columns.PRAY_ID + "=" + Tables.PRAYS_CATS + "." + Columns.PRAY_SLAVE_ID +
                 " WHERE " + Tables.PRAYS_CATS + "." + Columns.PRAY_SLAVE_ID + "=" + slaveId;
 
-
+        System.out.println(selectQuery);
         cursor = mDatabaseHelper.getCursor(selectQuery);
         if (cursor.moveToFirst()) {
             do {

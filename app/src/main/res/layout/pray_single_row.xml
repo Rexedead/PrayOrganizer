@@ -24,8 +24,9 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/pray_header"
         android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="@color/title" />
+        android:textAlignment="textStart"
+        android:textColor="@color/title"
+        android:gravity="start" />
 
     <ImageView
         android:id="@+id/pray_fav_img"

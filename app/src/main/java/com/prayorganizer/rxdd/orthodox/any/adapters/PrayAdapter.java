@@ -40,12 +40,13 @@ public class PrayAdapter extends RecyclerView.Adapter<PrayAdapter.PrayViewHolder
     @Override
     public PrayViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_prays_categories, parent, false);
-        return new PrayAdapter.PrayViewHolder(itemView);
+                .inflate(R.layout.pray_single_row, parent, false);
+        return new PrayViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(PrayViewHolder holder, int position) {
+        System.out.println(prayList.get(position).getText());
         holder.text.setText(prayList.get(position).getText());
         holder.header.setText(prayList.get(position).getHead());
     }
