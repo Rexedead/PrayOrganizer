@@ -1,9 +1,20 @@
 package com.prayorganizer.rxdd.orthodox.view.fragments;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.prayorganizer.rxdd.orthodox.R;
+import com.prayorganizer.rxdd.orthodox.any.GridSpacingItemDecoration;
+import com.prayorganizer.rxdd.orthodox.any.MyDividerItemDecoration;
 import com.prayorganizer.rxdd.orthodox.any.adapters.IconsMainAdapter;
 import com.prayorganizer.rxdd.orthodox.content.IconsMain;
 import com.prayorganizer.rxdd.orthodox.database.HolyModel;
@@ -12,18 +23,18 @@ import java.util.List;
 
 /**
  * Created by Rexedead on 08.01.2018.
+ *
  */
 
 public class IconsMainFragment extends FilteringListFragment {
     private IconsMainAdapter mAdapter;
-    private List<IconsMain> mIconsMain;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        mIconsMain = HolyModel.getInstance().getIconsData();
-        mAdapter = new IconsMainAdapter(mIconsMain);
+        List<IconsMain> iconsMain = HolyModel.getInstance().getIconsData();
+        mAdapter = new IconsMainAdapter(iconsMain);
 
     }
 
@@ -37,8 +48,28 @@ public class IconsMainFragment extends FilteringListFragment {
         return R.layout.icons_recycle;
     }
 
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.icons_recycle,container, false );
+        RecyclerView recyclerView = view.findViewById(R.id.icons_recycle);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
+
+        return view;
+    }
+
     @Override
     protected int getIdRecyclerView() {
+        System.out.println(R.id.icons_recycle);
         return R.id.icons_recycle;
+    }
+
+    private int dpToPx(int dp) {
+        Resources r = getResources();
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 }

@@ -46,7 +46,6 @@ public class PrayAdapter extends RecyclerView.Adapter<PrayAdapter.PrayViewHolder
 
     @Override
     public void onBindViewHolder(PrayViewHolder holder, int position) {
-        System.out.println(prayList.get(position).getText());
         holder.text.setText(prayList.get(position).getText());
         holder.header.setText(prayList.get(position).getHead());
     }

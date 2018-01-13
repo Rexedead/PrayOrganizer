@@ -197,9 +197,26 @@ public class HolyModel {
 
 
     public List<IconsMain> getIconsData() {
-        List<IconsMain> mm = new ArrayList<>();
-        IconsMain m = new IconsMain("ss");
-        mm.add(m);
-        return mm;
+        List<IconsMain> iconsMains = new ArrayList<>();
+
+        String selectQuery = "SELECT * FROM " + Tables.ICONS_WEB;
+        mDatabaseHelper.openDB();
+        Cursor cursor = mDatabaseHelper.getCursor(selectQuery);
+        if (cursor.moveToFirst()) {
+            do {
+                IconsMain icons;
+                icons = new IconsMain(
+                        cursor.getString(cursor.getColumnIndex(Columns.ICON_NAME)),
+                        cursor.getString(cursor.getColumnIndex(Columns.ICON_URL))
+                );
+                iconsMains.add(icons);
+
+            } while (cursor.moveToNext());
+            cursor.close();
+
+        }
+
+        mDatabaseHelper.close();
+        return iconsMains;
     }
 }

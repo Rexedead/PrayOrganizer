@@ -5,15 +5,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-
+import com.prayorganizer.rxdd.orthodox.AppContext;
 import com.prayorganizer.rxdd.orthodox.R;
+import com.prayorganizer.rxdd.orthodox.any.GlideApp;
 import com.prayorganizer.rxdd.orthodox.content.IconsMain;
 
 import java.util.List;
 
 /**
  * Created by Rexedead on 08.01.2018.
+ *
  */
 
 public class IconsMainAdapter extends FilterAdapter<IconsMain, IconsMainAdapter.IconsViewHolder> {
@@ -33,13 +36,15 @@ public class IconsMainAdapter extends FilterAdapter<IconsMain, IconsMainAdapter.
 
     static class IconsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
           IconsViewHolderClick mListenerHolder;
-        TextView title;
+        TextView icon_title;
+        ImageView icon_img;
         IconsViewHolder(View view, IconsViewHolderClick listener) {
             super(view);
             view.setOnClickListener(this);
 
             mListenerHolder = listener;
-            title = view.findViewById(R.id.title_img);
+            icon_title = view.findViewById(R.id.title_img);
+            icon_img = view.findViewById(R.id.icon_img);
         }
 
         @Override
@@ -68,11 +73,17 @@ public class IconsMainAdapter extends FilterAdapter<IconsMain, IconsMainAdapter.
     @Override
     public void onBindViewHolder(IconsViewHolder holder, int position) {
         IconsMain iconsMain = mListFiltered.get(position);
-
+        holder.icon_title.setText(iconsMain.getIcon_name());
+        GlideApp.with(AppContext.getAppContext())
+                .load(iconsMain.getIcon_link())
+                .placeholder(R.drawable.ic_cm1)
+                .override(200, 200)
+                .optionalCenterCrop()
+                .into(holder.icon_img);
     }
 
     @Override
     protected boolean filter(String str, IconsMain obj) {
-        return false;
+        return obj.getIcon_name().toLowerCase().contains(str.toLowerCase());
     }
 }

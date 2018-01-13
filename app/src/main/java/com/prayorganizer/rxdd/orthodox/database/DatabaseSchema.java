@@ -19,6 +19,10 @@ class DatabaseSchema {
         static final String PSALM_HEAD = "psalt_head";
         static final String PSALM_MAIN = "psalt_main";
 
+        static final String ICONS_WEB = "icons_web";
+
+
+
     }
     static final class Columns {
         static final String PRAY_ID = "_pray_id";
@@ -45,6 +49,9 @@ class DatabaseSchema {
         static final String PSALM_HEAD_CSL = "_psalt_csl_head";
         static final String PSALM_HEAD_ID = "_id_psalt_head";
         static final String PSALM_CAT_HEAD_ID = "_id_psalt_cat_and_head";
+
+        static final String ICON_NAME = "icon_name";
+        static final String ICON_URL = "icon_url";
     }
 }
 

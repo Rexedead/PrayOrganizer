@@ -16,7 +16,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/thumbnail"
+                android:id="@+id/icon_img"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
@@ -27,22 +27,14 @@
                 android:id="@+id/title_img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/thumbnail"
+                android:layout_below="@id/icon_img"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
-                android:textColor="#808080"
+                android:textColor="@color/title"
                 android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/desc_img"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/title"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:textSize="12sp" />
+
 
 
         </RelativeLayout>
