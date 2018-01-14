@@ -133,6 +133,7 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
 
         } else if (id == R.id.nav_favorites) {
             log("R.id.nav_favorites = " + id);
+            start(FavActivity.class, id);
 
         } else if (id == R.id.nav_map) {
             log("R.id.nav_map = " + id);

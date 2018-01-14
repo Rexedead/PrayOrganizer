@@ -42,6 +42,8 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".view.IconActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".view.FavActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>
 

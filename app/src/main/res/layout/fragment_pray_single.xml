@@ -4,4 +4,8 @@
     android:id="@+id/pray_single_list_recycler_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:scrollbars="vertical" />
+    android:scrollbars="vertical"
+    android:paddingBottom="@dimen/row_padding_vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/row_padding_vertical"/>

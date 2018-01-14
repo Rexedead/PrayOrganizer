@@ -19,7 +19,7 @@
             <ImageView
                 android:id="@+id/icon_img"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
+                android:layout_height="190dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:scaleType="fitXY"
