@@ -2,20 +2,17 @@ package com.prayorganizer.rxdd.orthodox.view;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.FrameLayout;
 
 import com.prayorganizer.rxdd.orthodox.R;
 import com.prayorganizer.rxdd.orthodox.view.fragments.FavoriteIconsFragment;
 import com.prayorganizer.rxdd.orthodox.view.fragments.FavoritePrayFragment;
 import com.prayorganizer.rxdd.orthodox.view.fragments.FavoritePsalmFragment;
-import com.prayorganizer.rxdd.orthodox.view.fragments.IconsMainFragment;
 
 /**
  * Created by Rexedead on 14.01.2018.
@@ -24,10 +21,17 @@ import com.prayorganizer.rxdd.orthodox.view.fragments.IconsMainFragment;
 
 public class FavActivity extends HolyActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fav_main);
+        FrameLayout frameLayout = findViewById(R.id.fragment_container);
+        getLayoutInflater().inflate(R.layout.fav_main, frameLayout);
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.hide();
+
+
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_fav);
 
         bottomNavigationView.setOnNavigationItemSelectedListener
@@ -69,7 +73,6 @@ public class FavActivity extends HolyActivity {
 
     //Used to select an item programmatically
     //bottomNavigationView.getMenu().getItem(2).setChecked(true);
-//    }
 
 
 

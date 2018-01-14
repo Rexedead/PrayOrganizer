@@ -21,6 +21,10 @@ class DatabaseSchema {
 
         static final String ICONS_WEB = "icons_web";
 
+        static final String FAV_PRAYS = "prays_fav";
+        static final String FAV_PSALMS = "psalt_fav";
+        static final String FAV_ICONS = "icons_fav";
+
 
 
     }
