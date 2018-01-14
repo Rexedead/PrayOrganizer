@@ -1,5 +1,7 @@
 package com.prayorganizer.rxdd.orthodox.view;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -12,9 +14,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.prayorganizer.rxdd.orthodox.R;
-import com.prayorganizer.rxdd.orthodox.view.HolyActivity;
-import com.prayorganizer.rxdd.orthodox.view.fragments.PsalmCSLFragment;
-import com.prayorganizer.rxdd.orthodox.view.fragments.PsalmRUFragment;
+import com.prayorganizer.rxdd.orthodox.view.fragments.PsalmTabFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +25,23 @@ import java.util.List;
 
 public class PsalmTabsActivity extends HolyActivity {
 
+    private static final String EXTRA_KEY_PSALM_NAME = "extra_key_psalm_name";
+
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     FrameLayout  mFrameLayout;
+    private String mPsalmName;
+
+    public static Intent newIntent(String psalmName, Context context){
+        Intent intent = new Intent(context, PsalmTabsActivity.class);
+
+        return intent.putExtra(EXTRA_KEY_PSALM_NAME, psalmName);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mPsalmName =  getIntent().getStringExtra(EXTRA_KEY_PSALM_NAME);
         FrameLayout frameLayout = findViewById(R.id.fragment_container);
         View view = getLayoutInflater().inflate(R.layout.psalm_tab_coordinator, frameLayout);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -47,8 +56,8 @@ public class PsalmTabsActivity extends HolyActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new PsalmRUFragment(), "ONE");
-        adapter.addFragment(new PsalmCSLFragment(), "TWO");
+        adapter.addFragment(PsalmTabFragment.newInstance(mPsalmName, "ru"), "кек");
+        adapter.addFragment(PsalmTabFragment.newInstance(mPsalmName, "cls"), "мда");
         viewPager.setAdapter(adapter);
     }
 

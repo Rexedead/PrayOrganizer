@@ -41,7 +41,7 @@ public class PsalmActivity extends HolyActivity implements PsalmsCategoriesFragm
 
 
     private void showPsalm(String psalmCategories){
-        Intent intent = new Intent(this, PsalmTabsActivity.class);
+        Intent intent = PsalmTabsActivity.newIntent(psalmCategories, this);
         startActivity(intent);
     }
 
