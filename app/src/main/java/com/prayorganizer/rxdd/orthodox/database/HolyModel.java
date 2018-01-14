@@ -162,8 +162,8 @@ public class HolyModel {
         return psalmsMasterCategories;
     }
 
-    public List<Psalm> getSinglePsalm(String masterId){
-        List<Psalm> psalmText = new ArrayList<>();
+    public Psalm getSinglePsalm(String masterId){
+
         String selectPsalmQuery =
         "SELECT "+ Columns.PSALM_RU+","+Columns.PSALM_CSL+","+Columns.PSALM_LINE_NUM +","+Columns.PSALM_HEAD_CSL+","+Columns.PSALM_HEAD_RU+
         " FROM "+Tables.PSALM_MAIN+
@@ -173,18 +173,18 @@ public class HolyModel {
 
         mDatabaseHelper.openDB();
         Cursor cursor = mDatabaseHelper.getCursor(selectPsalmQuery);
-
+        List<String> ruPsalmLines = new ArrayList<>();
+        List<String> cslPsalmLines = new ArrayList<>();
+        String headRu = null ;
+        String headCsl = null;
         if (cursor.moveToFirst()) {
             do {
-                Psalm psalm_single;
-                psalm_single = new Psalm(
-                        cursor.getString(cursor.getColumnIndex(Columns.PSALM_RU)),
-                        cursor.getString(cursor.getColumnIndex(Columns.PSALM_CSL)),
-                        cursor.getString(cursor.getColumnIndex(Columns.PSALM_HEAD_RU)),
-                        cursor.getString(cursor.getColumnIndex(Columns.PSALM_HEAD_CSL)),
-                        cursor.getString(cursor.getColumnIndex(Columns.PSALM_LINE_NUM))
-                );
-                psalmText.add(psalm_single);
+
+                          ruPsalmLines.add(cursor.getString(cursor.getColumnIndex(Columns.PSALM_RU)));
+                          cslPsalmLines.add(cursor.getString(cursor.getColumnIndex(Columns.PSALM_CSL)));
+                          headRu = cursor.getString(cursor.getColumnIndex(Columns.PSALM_HEAD_RU));
+                          headCsl = cursor.getString(cursor.getColumnIndex(Columns.PSALM_HEAD_CSL));
+
 
             } while (cursor.moveToNext());
             cursor.close();
@@ -192,7 +192,11 @@ public class HolyModel {
         }
 
         mDatabaseHelper.close();
-        return psalmText;
+        return new Psalm(
+                ruPsalmLines.toArray(new String[ruPsalmLines.size()]),
+                cslPsalmLines.toArray(new String[cslPsalmLines.size()]),
+                headRu, headCsl
+                );
     }
 
 

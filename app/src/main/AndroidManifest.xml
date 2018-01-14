@@ -30,16 +30,15 @@
             android:launchMode="singleTop"
             android:label="Настройки">
         </activity>
+
         <activity
             android:name=".view.PsalmActivity"
-            android:launchMode="singleTop"
-
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
             android:name=".view.PsalmTabsActivity"
-            android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity android:name=".view.IconActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".view.FavActivity"

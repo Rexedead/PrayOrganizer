@@ -1,6 +1,5 @@
 package com.prayorganizer.rxdd.orthodox.view;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -26,6 +25,7 @@ import com.prayorganizer.rxdd.orthodox.view.main.MainActivity;
  */
 
 public abstract class HolyActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
     private static final String TAG = "HolyActivity";
 
 //    public static final String EXTRA_KEY_ITEM_ID = "item_id";

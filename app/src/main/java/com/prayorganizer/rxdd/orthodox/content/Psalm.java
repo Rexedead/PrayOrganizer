@@ -6,25 +6,29 @@ package com.prayorganizer.rxdd.orthodox.content;
  */
 
 public class Psalm {
-    private String lineRU;
-    private String lineCSL;
+    private String[] linesRU;
+    private String[] linesCSL;
     private String headRU;
     private String headCSL;
-    private String lineID;
 
 
 
-    public Psalm(String lineRU, String lineCSL, String headRU, String headCSL, String lineID) {
-        this.lineRU = lineRU;
-        this.lineCSL = lineCSL;
+
+    public Psalm(String[] linesRU, String[] linesCSL, String headRU, String headCSL) {
+        this.linesRU = linesRU;
+        this.linesCSL = linesCSL;
         this.headRU = headRU;
         this.headCSL = headCSL;
-        this.lineID = lineID;
-    }
-    public String getLineID() {
-        return lineID;
+
     }
 
+    public String[] getLinesRU() {
+        return linesRU;
+    }
+
+    public String[] getLinesCSL() {
+        return linesCSL;
+    }
 
     public String getHeadRU() {
         return headRU;
@@ -34,12 +38,5 @@ public class Psalm {
         return headCSL;
     }
 
-    public String getLineRU() {
 
-        return lineRU;
-    }
-
-    public String getLineCSL() {
-        return lineCSL;
-    }
 }
