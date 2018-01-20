@@ -56,8 +56,8 @@ public class PsalmTabsActivity extends HolyActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(PsalmTabFragment.newInstance(mPsalmName, "ru"), "кек");
-        adapter.addFragment(PsalmTabFragment.newInstance(mPsalmName, "cls"), "мда");
+        adapter.addFragment(PsalmTabFragment.newInstance(mPsalmName, "ru"), "Русский");
+        adapter.addFragment(PsalmTabFragment.newInstance(mPsalmName, "cls"), "Словѣньскъ");
         viewPager.setAdapter(adapter);
     }
 

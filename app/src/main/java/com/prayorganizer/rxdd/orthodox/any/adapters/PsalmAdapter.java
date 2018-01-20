@@ -1,6 +1,7 @@
 package com.prayorganizer.rxdd.orthodox.any.adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -24,7 +25,10 @@ public class PsalmAdapter extends RecyclerView.Adapter<PsalmAdapter.PsalmViewHol
 
     @Override
     public PsalmViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new PsalmViewHolder(parent);
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.psalm_single_row, parent, false);
+        return new PsalmAdapter.PsalmViewHolder(itemView);
+
     }
 
     @Override

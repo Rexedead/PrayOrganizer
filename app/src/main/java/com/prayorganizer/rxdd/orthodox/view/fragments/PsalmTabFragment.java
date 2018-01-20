@@ -31,7 +31,7 @@ public class PsalmTabFragment extends Fragment {
     public static PsalmTabFragment newInstance(String psalmName, String lang){
         PsalmTabFragment fragment = new PsalmTabFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(KEY_PSALM_NAME, psalmName);
+        bundle.putString(KEY_PSALM_NAME, psalmName.split(" ")[1]);
         bundle.putString(KEY_LANG, lang);
         fragment.setArguments(bundle);
         return fragment;

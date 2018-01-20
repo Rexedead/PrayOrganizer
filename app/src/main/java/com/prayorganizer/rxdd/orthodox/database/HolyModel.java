@@ -10,6 +10,7 @@ import com.prayorganizer.rxdd.orthodox.content.Psalm;
 import com.prayorganizer.rxdd.orthodox.content.PsalmsCategories;
 import com.prayorganizer.rxdd.orthodox.database.DatabaseSchema.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -166,22 +167,23 @@ public class HolyModel {
 
         String selectPsalmQuery =
         "SELECT * FROM " + Tables.PSALM_MAIN +
-                " WHERE " + Columns.PSALM_ID +"="+"'"+masterId+"'";
-
+                " WHERE " + Columns.PSALM_ID +" = "+ masterId;
+        Psalm mPsalm = null;
         mDatabaseHelper.openDB();
         Cursor cursor = mDatabaseHelper.getCursor(selectPsalmQuery);
-        List<String> ruPsalmLines = new ArrayList<>();
-        List<String> cslPsalmLines = new ArrayList<>();
-        String headRu = null;
-        String headCsl = null;
         if (cursor.moveToFirst()) {
             do {
 
-                          ruPsalmLines.add(cursor.getString(cursor.getColumnIndex(Columns.PSALM_RU)));
-                          cslPsalmLines.add(cursor.getString(cursor.getColumnIndex(Columns.PSALM_CSL)));
-                          headRu = cursor.getString(cursor.getColumnIndex(Columns.PSALM_HEAD_RU));
-                          headCsl = cursor.getString(cursor.getColumnIndex(Columns.PSALM_HEAD_CSL));
+                    String psalmRu[] = cursor.getString(cursor.getColumnIndex(Columns.PSALM_RU)).split("\n");
+                    String psalmCsl[] = cursor.getString(cursor.getColumnIndex(Columns.PSALM_CSL)).split("\n");
 
+
+                mPsalm = new Psalm(
+                            psalmRu,
+                            psalmCsl,
+                    cursor.getString(cursor.getColumnIndex(Columns.PSALM_HEAD_RU)),
+                    cursor.getString(cursor.getColumnIndex(Columns.PSALM_HEAD_CSL))
+                );
 
             } while (cursor.moveToNext());
             cursor.close();
@@ -190,11 +192,7 @@ public class HolyModel {
 
         mDatabaseHelper.close();
 
-        return new Psalm(
-                ruPsalmLines.toArray(new String[ruPsalmLines.size()]),
-                cslPsalmLines.toArray(new String[cslPsalmLines.size()]),
-                headRu, headCsl
-                );
+        return mPsalm;
     }
 
 
