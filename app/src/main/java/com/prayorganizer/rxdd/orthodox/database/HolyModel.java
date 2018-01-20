@@ -165,17 +165,14 @@ public class HolyModel {
     public Psalm getSinglePsalm(String masterId){
 
         String selectPsalmQuery =
-        "SELECT "+ Columns.PSALM_RU+","+Columns.PSALM_CSL+","+Columns.PSALM_LINE_NUM +","+Columns.PSALM_HEAD_CSL+","+Columns.PSALM_HEAD_RU+
-        " FROM "+Tables.PSALM_MAIN+
-        " LEFT JOIN "+Tables.PSALM_HEAD +
-        " ON "+Columns.PSALM_HEAD_ID+"="+Columns.PSALM_CAT_HEAD_ID+
-        " WHERE "+Tables.PSALM_MAIN+"."+Columns.PSALM_CAT_HEAD_ID +"="+ masterId;
+        "SELECT * FROM " + Tables.PSALM_MAIN +
+                " WHERE " + Columns.PSALM_ID +"="+"'"+masterId+"'";
 
         mDatabaseHelper.openDB();
         Cursor cursor = mDatabaseHelper.getCursor(selectPsalmQuery);
         List<String> ruPsalmLines = new ArrayList<>();
         List<String> cslPsalmLines = new ArrayList<>();
-        String headRu = null ;
+        String headRu = null;
         String headCsl = null;
         if (cursor.moveToFirst()) {
             do {
@@ -192,6 +189,7 @@ public class HolyModel {
         }
 
         mDatabaseHelper.close();
+
         return new Psalm(
                 ruPsalmLines.toArray(new String[ruPsalmLines.size()]),
                 cslPsalmLines.toArray(new String[cslPsalmLines.size()]),

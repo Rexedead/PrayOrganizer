@@ -50,7 +50,7 @@ public class PsalmTabFragment extends Fragment {
         mLang = getArguments().getString(KEY_LANG);
         mPsalmName = getArguments().getString(KEY_PSALM_NAME);
         mPsalm = HolyModel.getInstance().getSinglePsalm(mPsalmName);
-        String[] psalmLines = null;
+        String[] psalmLines;
         if(mPsalmName.equals("ru")){
             psalmLines = mPsalm.getLinesRU();
         }else{

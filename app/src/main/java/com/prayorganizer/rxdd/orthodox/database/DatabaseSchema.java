@@ -43,16 +43,14 @@ class DatabaseSchema {
         static final String PRAY_SLAVE_CATNAME = "cat_slave";
         static final String PRAY_SLAVE_IMAGE = "img_slave";
 
-        static final String PSALM_CAT_ID = "_id_psalt_cat";
+        static final String PSALM_ID = "_id_psalt";
         static final String PSALM_KAF_ID = "_kaf_id";
-        static final String PSALM_RU = "psalt_ru_line";
-        static final String PSALM_CSL = "psalt_csl_line";
-        static final String PSALM_LINE_NUM = "psalt_line_id";
-        static final String PSALM_FAV = "psalt_fav";
-        static final String PSALM_HEAD_RU = "_psalt_ru_head";
-        static final String PSALM_HEAD_CSL = "_psalt_csl_head";
-        static final String PSALM_HEAD_ID = "_id_psalt_head";
-        static final String PSALM_CAT_HEAD_ID = "_id_psalt_cat_and_head";
+        static final String PSALM_CAT_ID = "_id_psalt_cat";
+        static final String PSALM_RU = "psalt_ru_full";
+        static final String PSALM_CSL = "psalt_csl_full";
+        static final String PSALM_TRANSLATE = "psalt_translate";
+        static final String PSALM_HEAD_RU = "psalt_name_ru";
+        static final String PSALM_HEAD_CSL = "psalt_name_csl";
 
         static final String ICON_NAME = "icon_name";
         static final String ICON_URL = "icon_url";
