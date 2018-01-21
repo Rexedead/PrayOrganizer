@@ -23,7 +23,6 @@ public class PsalmAdapter extends RecyclerView.Adapter<PsalmAdapter.PsalmViewHol
 
 
 
-
     @Override
     public PsalmViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())

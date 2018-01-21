@@ -6,13 +6,11 @@ package com.prayorganizer.rxdd.orthodox.content;
  */
 
 public class Psalm {
+
     private String[] linesRU;
     private String[] linesCSL;
     private String headRU;
     private String headCSL;
-
-
-
 
     public Psalm(String[] linesRU, String[] linesCSL, String headRU, String headCSL) {
         this.linesRU = linesRU;

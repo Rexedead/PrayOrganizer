@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import com.prayorganizer.rxdd.orthodox.R;
 import com.prayorganizer.rxdd.orthodox.any.MyDividerItemDecoration;
 import com.prayorganizer.rxdd.orthodox.any.adapters.PsalmAdapter;
@@ -16,7 +18,6 @@ import com.prayorganizer.rxdd.orthodox.database.HolyModel;
 
 /**
  * Created by Rexedead on 08.01.2018.
- * todo csl shows at 2x tabs
  */
 
 public class PsalmTabFragment extends Fragment {
@@ -27,6 +28,7 @@ public class PsalmTabFragment extends Fragment {
     private String mLang;
     private Psalm mPsalm;
     private PsalmAdapter mPsalmAdapter;
+    private TextView mHeaderTextView;
 
     public static PsalmTabFragment newInstance(String psalmName, String lang){
         PsalmTabFragment fragment = new PsalmTabFragment();
@@ -51,7 +53,7 @@ public class PsalmTabFragment extends Fragment {
         mPsalmName = getArguments().getString(KEY_PSALM_NAME);
         mPsalm = HolyModel.getInstance().getSinglePsalm(mPsalmName);
         String[] psalmLines;
-        if(mPsalmName.equals("ru")){
+        if(mLang.equals("ru")){
             psalmLines = mPsalm.getLinesRU();
         }else{
             psalmLines = mPsalm.getLinesCSL();
@@ -68,6 +70,13 @@ public class PsalmTabFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_psalm_single_tag, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.psalm_lines_recycler_view);
         recyclerView.addItemDecoration(new MyDividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL, 0));
+        mHeaderTextView = view.findViewById(R.id.psalm_header);
+
+        if(mLang.equals("ru")){
+            mHeaderTextView.setText(mPsalm.getHeadRU());
+        }else{
+            mHeaderTextView.setText(mPsalm.getHeadCSL());
+        }
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
