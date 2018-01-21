@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Created by Rexedead on 08.01.2018.
- *
+ * todo glide cut off from top
  */
 
 public class IconsMainAdapter extends FilterAdapter<IconsMain, IconsMainAdapter.IconsViewHolder> {

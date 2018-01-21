@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by danbi on 03.01.2018.
+ * todo grid view instead of list
  */
 
 public class PsalmsCategoriesAdapter extends FilterAdapter<PsalmsCategories, PsalmsCategoriesAdapter.PsalmsViewHolder> {

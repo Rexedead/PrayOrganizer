@@ -16,7 +16,7 @@ import com.prayorganizer.rxdd.orthodox.database.HolyModel;
 
 /**
  * Created by Rexedead on 08.01.2018.
- *
+ * todo csl shows at 2x tabs
  */
 
 public class PsalmTabFragment extends Fragment {
@@ -67,7 +67,7 @@ public class PsalmTabFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_psalm_single_tag, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.psalm_lines_recycler_view);
-        recyclerView.addItemDecoration(new MyDividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL, 16));
+        recyclerView.addItemDecoration(new MyDividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL, 0));
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);

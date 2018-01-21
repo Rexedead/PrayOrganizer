@@ -15,7 +15,8 @@ import java.util.List;
 
 /**
  * Created by Rexedead on 30.12.2017.
- *todo select psalt_ru_line from psalt_main where _id_psalt in(select * from psalt_fav)
+ * todo select psalt_ru_line from psalt_main where _id_psalt in(select * from psalt_fav)
+ * todo insert for fav
  */
 
 public class HolyModel {

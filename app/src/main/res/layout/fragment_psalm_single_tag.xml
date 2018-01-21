@@ -39,7 +39,8 @@
         android:layout_above="@+id/image_ru"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/psalm_header" />
+        android:layout_below="@+id/psalm_header"
+        />
 
 
 </RelativeLayout>
