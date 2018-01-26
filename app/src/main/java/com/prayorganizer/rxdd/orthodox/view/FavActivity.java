@@ -16,7 +16,7 @@ import com.prayorganizer.rxdd.orthodox.view.fragments.FavoritePsalmFragment;
 
 /**
  * Created by Rexedead on 14.01.2018.
- *
+ *  todo отображать избранное
  */
 
 public class FavActivity extends HolyActivity {

@@ -9,10 +9,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import com.prayorganizer.rxdd.orthodox.R;
 import com.prayorganizer.rxdd.orthodox.any.MyDividerItemDecoration;
 import com.prayorganizer.rxdd.orthodox.any.adapters.PrayAdapter;
+import com.prayorganizer.rxdd.orthodox.any.adapters.PsalmAdapter;
 import com.prayorganizer.rxdd.orthodox.content.Pray;
 import com.prayorganizer.rxdd.orthodox.database.HolyModel;
 

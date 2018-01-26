@@ -7,13 +7,17 @@
 
     <TextView
         android:id="@+id/pray_header"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_toEndOf="@+id/pray_fav_img"
+        android:layout_toRightOf="@+id/pray_fav_img"
         android:text="header-title"
         android:textAlignment="center"
         android:textColor="@color/title"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
@@ -23,17 +27,20 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/pray_header"
+        android:gravity="start"
         android:text="TextView"
-        android:textAlignment="textStart"
-        android:textColor="@color/title"
-        android:gravity="start" />
+        android:paddingTop="@dimen/row_padding_vertical"
+        android:textAlignment="center"
+        android:textColor="@color/title" />
 
-    <ImageView
+    <CheckBox
         android:id="@+id/pray_fav_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        android:layout_above="@+id/pray_text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:button="@drawable/fav_button"
+        />
+
 </RelativeLayout>

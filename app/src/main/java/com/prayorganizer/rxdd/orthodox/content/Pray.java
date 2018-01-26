@@ -7,25 +7,26 @@ package com.prayorganizer.rxdd.orthodox.content;
 
 public class Pray {
     private String text;
-    private String fav;
     private String head;
+    private String id;
+
+    public String getId() {
+        return id;
+    }
 
     public String getText() {
         return text;
     }
 
-    public String getFav() {
-        return fav;
-    }
 
     public String getHead() {
         return head;
     }
 
-    public Pray(String text, String fav, String head) {
+    public Pray(String text, String head, String pID) {
 
         this.text = text;
-        this.fav = fav;
         this.head = head;
+        this.id = pID;
     }
 }

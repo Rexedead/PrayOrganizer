@@ -4,11 +4,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.prayorganizer.rxdd.orthodox.AppContext;
 import com.prayorganizer.rxdd.orthodox.R;
 import com.prayorganizer.rxdd.orthodox.content.Pray;
+import com.prayorganizer.rxdd.orthodox.database.HolyModel;
 
 import java.util.List;
 
@@ -19,7 +24,8 @@ import java.util.List;
 public class PrayAdapter extends RecyclerView.Adapter<PrayAdapter.PrayViewHolder> {
 
     private List <Pray> prayList;
-
+    private CheckBox mCheckBoxFav;
+    private boolean mChecked;
     public PrayAdapter(List<Pray> prayList) {
         this.prayList = prayList;
     }
@@ -48,6 +54,23 @@ public class PrayAdapter extends RecyclerView.Adapter<PrayAdapter.PrayViewHolder
     public void onBindViewHolder(PrayViewHolder holder, int position) {
         holder.text.setText(prayList.get(position).getText());
         holder.header.setText(prayList.get(position).getHead());
+
+        final String mPraysFavTable = "prays_fav";
+        mChecked = HolyModel.getInstance().checkFav(prayList.get(position).getId(),mPraysFavTable);
+        mCheckBoxFav = holder.itemView.findViewById(R.id.pray_fav_img);
+        mCheckBoxFav.setChecked(mChecked);
+        for (final Pray p:prayList) {
+            mCheckBoxFav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (!isChecked){
+                        HolyModel.getInstance().removeFav(p.getId(),mPraysFavTable);
+                        Toast.makeText(AppContext.getAppContext(), "Добавлено в избранное", Toast.LENGTH_SHORT).show();
+                    }else HolyModel.getInstance().setFav(p.getId(),mPraysFavTable);
+                    Toast.makeText(AppContext.getAppContext(), "Удалено из избранного", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
     }
 
     @Override

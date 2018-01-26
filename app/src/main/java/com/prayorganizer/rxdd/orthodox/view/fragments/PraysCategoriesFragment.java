@@ -74,7 +74,6 @@ private @Nullable String mMasterCategory;
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle args = getArguments();
-
         if (args != null) {
             mIsSlaveCategories = args.getBoolean("isSlave");
             mMasterCategory = args.getString("masterCategory");

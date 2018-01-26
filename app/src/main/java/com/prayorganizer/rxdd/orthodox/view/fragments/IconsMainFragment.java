@@ -23,7 +23,7 @@ import java.util.List;
 
 /**
  * Created by Rexedead on 08.01.2018.
- *
+ * todo открывать иконы по клику
  */
 
 public class IconsMainFragment extends FilteringListFragment {

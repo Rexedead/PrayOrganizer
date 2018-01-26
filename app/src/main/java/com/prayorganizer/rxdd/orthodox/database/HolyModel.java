@@ -1,6 +1,8 @@
 package com.prayorganizer.rxdd.orthodox.database;
 
+import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.prayorganizer.rxdd.orthodox.AppContext;
 import com.prayorganizer.rxdd.orthodox.content.IconsMain;
@@ -10,13 +12,12 @@ import com.prayorganizer.rxdd.orthodox.content.Psalm;
 import com.prayorganizer.rxdd.orthodox.content.PsalmsCategories;
 import com.prayorganizer.rxdd.orthodox.database.DatabaseSchema.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by Rexedead on 30.12.2017.
  * todo select psalt_ru_line from psalt_main where _id_psalt in(select * from psalt_fav)
- * todo insert for fav
+ *
  */
 
 public class HolyModel {
@@ -128,8 +129,8 @@ public class HolyModel {
                 Pray pray_single;
                 pray_single = new Pray(
                         cursor.getString(cursor.getColumnIndex(Columns.PRAY_TEXT)),
-                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_FAV)),
-                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_TITLE))
+                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_TITLE)),
+                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_ID))
                 );
                 praysText.add(pray_single);
             } while (cursor.moveToNext());
@@ -220,4 +221,43 @@ public class HolyModel {
         mDatabaseHelper.close();
         return iconsMains;
     }
+
+
+    public boolean checkFav(String id, String Table){
+        String Query = "SELECT "+Columns.FAV_ID+ " FROM "+Table+" WHERE "+Columns.FAV_ID+" = "+id;
+        mDatabaseHelper.openDB();
+        SQLiteDatabase db = mDatabaseHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            db.close();
+            mDatabaseHelper.close();
+            return false;
+        }
+        cursor.close();
+        db.close();
+        mDatabaseHelper.close();
+        return true;
+
+    }
+
+
+    public void setFav(String id, String Table){ //Tables.FAV_PRAYS
+        ContentValues cv = new ContentValues();
+        cv.put(Columns.FAV_ID, id);
+        SQLiteDatabase db = mDatabaseHelper.getWritableDatabase();
+        db.insert(Table, null, cv);
+        mDatabaseHelper.close();
+        db.close();
+        cv.clear();
+    }
+
+
+    public void removeFav(String id, String Table){
+        SQLiteDatabase db = mDatabaseHelper.getWritableDatabase();
+        db.delete(Table, Columns.FAV_ID+"=" + id, null);
+        mDatabaseHelper.close();
+        db.close();
+    }
+
 }

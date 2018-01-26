@@ -8,13 +8,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.prayorganizer.rxdd.orthodox.R;
 import com.prayorganizer.rxdd.orthodox.any.MyDividerItemDecoration;
 import com.prayorganizer.rxdd.orthodox.any.adapters.PsalmAdapter;
 import com.prayorganizer.rxdd.orthodox.content.Psalm;
 import com.prayorganizer.rxdd.orthodox.database.HolyModel;
+
 
 /**
  * Created by Rexedead on 08.01.2018.
@@ -29,6 +33,8 @@ public class PsalmTabFragment extends Fragment {
     private Psalm mPsalm;
     private PsalmAdapter mPsalmAdapter;
     private TextView mHeaderTextView;
+    private CheckBox mCheckBoxFav;
+    private boolean mChecked;
 
     public static PsalmTabFragment newInstance(String psalmName, String lang){
         PsalmTabFragment fragment = new PsalmTabFragment();
@@ -77,6 +83,21 @@ public class PsalmTabFragment extends Fragment {
         }else{
             mHeaderTextView.setText(mPsalm.getHeadCSL());
         }
+
+        final String mPsalmFavTable = "psalt_fav";
+        final String mPID = getArguments().getString(KEY_PSALM_NAME);
+        mChecked = HolyModel.getInstance().checkFav(mPID,mPsalmFavTable);
+        mCheckBoxFav = view.findViewById(R.id.psalm_fav_img);
+        mCheckBoxFav.setChecked(mChecked);
+        mCheckBoxFav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!isChecked){
+                    HolyModel.getInstance().removeFav(mPID,mPsalmFavTable);
+                    Toast.makeText(getContext(), "Добавлено в избранное", Toast.LENGTH_SHORT).show();
+                }else HolyModel.getInstance().setFav(mPID,mPsalmFavTable);
+                Toast.makeText(getContext(), "Удалено из избранного", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);

@@ -32,7 +32,6 @@ class DatabaseSchema {
         static final String PRAY_ID = "_pray_id";
         static final String PRAY_TEXT = "pray_text";
         static final String PRAY_TITLE = "pray_title";
-        static final String PRAY_FAV = "pray_fav";
         static final String PRAY_TAG = "pray_tags";
         static final String CAT_ID = "_cat_id";
         static final String PRAY_MASTER_ID = "_master_id";
@@ -54,6 +53,11 @@ class DatabaseSchema {
 
         static final String ICON_NAME = "icon_name";
         static final String ICON_URL = "icon_url";
+
+        static final String FAV_ID = "_id";
+
+
+
     }
 }
 

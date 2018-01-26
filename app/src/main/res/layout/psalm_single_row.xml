@@ -17,6 +17,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textColor="#F44336"
+        android:layout_centerVertical="true"
         android:textSize="22sp"
         tools:text="N"
 />
