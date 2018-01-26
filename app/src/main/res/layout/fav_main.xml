@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
-        app:itemIconTint="@color/colorMainFragment"
-        app:itemTextColor="@color/colorMainFragment"
+        app:itemIconTint="@color/fav_selected"
+        app:itemTextColor="@color/fav_selected"
         app:menu="@menu/bottom_navigation_main_fav"/>
 </RelativeLayout>

@@ -100,6 +100,27 @@ public class HolyModel {
         return praysSlaveCategories;
     }
 
+
+    public List<PraysCategories> getAllSlaveCategoriesOfPrays(){
+        List<PraysCategories> praysSlaveCategoriesAll = new ArrayList<>();
+        String Query = "SELECT * FROM "+ Tables.PRAYS_SLAVE;
+        mDatabaseHelper.openDB();
+        Cursor cursor = mDatabaseHelper.getCursor(Query);
+        if (cursor.moveToFirst()) {
+            do {
+                PraysCategories prays_slave;
+                prays_slave = new PraysCategories(
+                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_SLAVE_CATNAME)),
+                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_SLAVE_IMAGE))
+                );
+                praysSlaveCategoriesAll.add(prays_slave);
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        mDatabaseHelper.close();
+        return praysSlaveCategoriesAll;
+    }
+
     public List<Pray> getPrays(String slaveCategory) {
         List<Pray> praysText = new ArrayList<>();
         String slaveIdQuery = "SELECT " + Columns.PRAY_SLAVE_ID +

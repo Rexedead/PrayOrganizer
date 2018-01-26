@@ -62,12 +62,12 @@ private @Nullable String mMasterCategory;
 
     @Override
     protected int getIdContainer() {
-        return R.layout.fragment_prays_categories;
+        return R.layout.empty_recycler_view;
     }
 
     @Override
     protected int getIdRecyclerView() {
-        return R.id.prays_categories_recycler_view;
+        return R.id.empty_recycler_view;
     }
 
     @Override

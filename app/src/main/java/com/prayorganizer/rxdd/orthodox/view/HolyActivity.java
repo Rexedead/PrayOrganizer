@@ -39,7 +39,7 @@ public abstract class HolyActivity extends AppCompatActivity implements Navigati
 
         
         setSupportActionBar(toolbar);
-//todo Категории молитв мастер - действие на кнопу: Открыть/скрыть все подкатегории
+//todo Категории молитв мастер - действие на кнопу: Открыть/скрыть все подкатегории. Метода для базы: getAllSlaveCategoriesOfPrays (уже готова)
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
