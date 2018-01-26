@@ -9,14 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.Toast;
 
 import com.prayorganizer.rxdd.orthodox.R;
 import com.prayorganizer.rxdd.orthodox.any.MyDividerItemDecoration;
 import com.prayorganizer.rxdd.orthodox.any.adapters.PrayAdapter;
-import com.prayorganizer.rxdd.orthodox.any.adapters.PsalmAdapter;
 import com.prayorganizer.rxdd.orthodox.content.Pray;
 import com.prayorganizer.rxdd.orthodox.database.HolyModel;
 
@@ -52,7 +48,7 @@ public class PraysFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_pray_single,container, false );
+        View view = inflater.inflate(R.layout.prays_recycler,container, false );
         RecyclerView recyclerView = view.findViewById(R.id.pray_single_list_recycler_view);
 
         recyclerView.addItemDecoration(new MyDividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL, 16));

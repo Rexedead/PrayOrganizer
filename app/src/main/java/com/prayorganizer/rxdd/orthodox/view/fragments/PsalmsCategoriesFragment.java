@@ -59,12 +59,12 @@ public class PsalmsCategoriesFragment extends FilteringListFragment {
 
     @Override
     protected int getIdContainer() {
-        return R.layout.empty_recycler_view;
+        return R.layout.recycler_view;
     }
 
     @Override
     protected int getIdRecyclerView() {
-        return R.id.empty_recycler_view;
+        return R.id.recycler_view;
     }
 
 }

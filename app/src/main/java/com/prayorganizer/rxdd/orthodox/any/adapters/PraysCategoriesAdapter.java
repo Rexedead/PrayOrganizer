@@ -49,7 +49,7 @@ public class PraysCategoriesAdapter extends FilterAdapter<PraysCategories, Prays
     @Override
     public PraysViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.categories_pray_row, parent, false);
+                    .inflate(R.layout.pray_categories_row, parent, false);
 
         return new PraysViewHolder(itemView, new PraysViewHolder.PraysViewHolderClick() {
             @Override

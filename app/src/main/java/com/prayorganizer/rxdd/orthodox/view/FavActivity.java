@@ -26,7 +26,7 @@ public class FavActivity extends HolyActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FrameLayout frameLayout = findViewById(R.id.fragment_container);
-        getLayoutInflater().inflate(R.layout.fav_main, frameLayout);
+        getLayoutInflater().inflate(R.layout.favorites_main, frameLayout);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.hide();
 

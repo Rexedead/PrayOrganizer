@@ -37,7 +37,7 @@ public class PsalmsCategoriesAdapter extends FilterAdapter<PsalmsCategories, Psa
     @Override
     public PsalmsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.categories_psalms_row, parent, false);
+                .inflate(R.layout.psalms_categories_row, parent, false);
         return new PsalmsViewHolder(itemView, mListener);
     }
 

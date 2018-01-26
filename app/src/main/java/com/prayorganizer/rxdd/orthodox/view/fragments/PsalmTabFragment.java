@@ -73,7 +73,7 @@ public class PsalmTabFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_psalm_single_tag, container, false);
+        View view = inflater.inflate(R.layout.psalm_single, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.psalm_lines_recycler_view);
         recyclerView.addItemDecoration(new MyDividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL, 0));
         mHeaderTextView = view.findViewById(R.id.psalm_header);
