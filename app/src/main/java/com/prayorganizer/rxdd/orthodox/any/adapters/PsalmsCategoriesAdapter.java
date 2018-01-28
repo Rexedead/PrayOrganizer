@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.prayorganizer.rxdd.orthodox.R;
@@ -17,7 +18,6 @@ import java.util.List;
  */
 
 public class PsalmsCategoriesAdapter extends FilterAdapter<PsalmsCategories, PsalmsCategoriesAdapter.PsalmsViewHolder> {
-
     private PsalmCategoriesAdapterItemClick mListener;
     public interface PsalmCategoriesAdapterItemClick {
         void onClick(View view, String title);

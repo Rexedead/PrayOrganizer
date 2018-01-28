@@ -28,7 +28,6 @@ public class IconsMainAdapter extends FilterAdapter<IconsMain, IconsMainAdapter.
     }
 
 
-
     public interface IconsMainAdapterItemClick {
         void onClick(View view, String title);
     }

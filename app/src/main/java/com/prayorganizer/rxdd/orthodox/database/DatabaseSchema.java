@@ -12,8 +12,6 @@ class DatabaseSchema {
         static final String PRAYS_CATS = "prays_cats";
         static final String PRAYS_MASTER = "prays_cats_id_master";
         static final String PRAYS_SLAVE = "prays_cats_id_slave";
-        static final String PRAYS_KONTAK = "prays_kontakion";
-        static final String PRAYS_TROP = "prays_troparion";
 
         static final String PSALMS_MASTER = "psalt_cat";
         static final String PSALM_HEAD = "psalt_head";
@@ -33,7 +31,6 @@ class DatabaseSchema {
         static final String PRAY_TEXT = "pray_text";
         static final String PRAY_TITLE = "pray_title";
         static final String PRAY_TAG = "pray_tags";
-        static final String CAT_ID = "_cat_id";
         static final String PRAY_MASTER_ID = "_master_id";
         static final String PRAY_MASTER_IMAGE = "img_master";
         static final String PRAY_MASTER_TAG = "tag_master";

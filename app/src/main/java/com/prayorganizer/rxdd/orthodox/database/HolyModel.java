@@ -135,15 +135,11 @@ public class HolyModel {
             } while (cursor.moveToNext());
             cursor.close();
         }
-        
-        System.out.println(slaveId);
-        String selectQuery = "SELECT *"+
-                " FROM " + Tables.PRAYS_MAIN +
-                " LEFT JOIN " + Tables.PRAYS_CATS +
-                " ON " + Tables.PRAYS_MAIN + "." + Columns.PRAY_ID + "=" + Tables.PRAYS_CATS + "." + Columns.PRAY_SLAVE_ID +
-                " WHERE " + Tables.PRAYS_CATS + "." + Columns.PRAY_SLAVE_ID + "=" + slaveId;
 
-        System.out.println(selectQuery);
+        String selectQuery = "SELECT " + Columns.PRAY_ID + ", " + Columns.PRAY_TITLE+ ", " + Columns.PRAY_TEXT+
+                " FROM " + Tables.PRAYS_MAIN +
+                " WHERE " + Columns.PRAY_SLAVE_ID + "='" + slaveId+"'";
+
         cursor = mDatabaseHelper.getCursor(selectQuery);
         if (cursor.moveToFirst()) {
             do {
@@ -279,6 +275,27 @@ public class HolyModel {
         db.delete(Table, Columns.FAV_ID+"=" + id, null);
         mDatabaseHelper.close();
         db.close();
+    }
+
+    public List<Pray> getFavsOfPrays(){
+        List<Pray> praysFavorites = new ArrayList<>();
+        String Query = "SELECT * FROM " + Tables.PRAYS_MAIN +" WHERE "+Columns.PRAY_ID+" IN (SELECT * FROM "+Tables.FAV_PRAYS+")";
+        mDatabaseHelper.openDB();
+        Cursor cursor = mDatabaseHelper.getCursor(Query);
+        if (cursor.moveToFirst()) {
+            do {
+                Pray prays_fav;
+                prays_fav = new Pray(
+                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_TEXT)),
+                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_TITLE)),
+                        cursor.getString(cursor.getColumnIndex(Columns.PRAY_ID))
+                );
+                praysFavorites.add(prays_fav);
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        mDatabaseHelper.close();
+        return praysFavorites;
     }
 
 }

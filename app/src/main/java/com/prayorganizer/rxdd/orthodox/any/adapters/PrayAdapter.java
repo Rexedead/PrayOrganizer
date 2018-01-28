@@ -23,9 +23,10 @@ import java.util.List;
 
 public class PrayAdapter extends RecyclerView.Adapter<PrayAdapter.PrayViewHolder> {
 
-    private List <Pray> prayList;
+    private List<Pray> prayList;
     private CheckBox mCheckBoxFav;
     private boolean mChecked;
+
     public PrayAdapter(List<Pray> prayList) {
         this.prayList = prayList;
     }
@@ -52,26 +53,29 @@ public class PrayAdapter extends RecyclerView.Adapter<PrayAdapter.PrayViewHolder
 
     @Override
     public void onBindViewHolder(PrayViewHolder holder, int position) {
+        final String mPraysFavTable = "prays_fav";
         holder.text.setText(prayList.get(position).getText());
         holder.header.setText(prayList.get(position).getHead());
+        final String currentId = prayList.get(position).getId();
 
-        final String mPraysFavTable = "prays_fav";
-        mChecked = HolyModel.getInstance().checkFav(prayList.get(position).getId(),mPraysFavTable);
-        mCheckBoxFav = holder.itemView.findViewById(R.id.pray_fav_img);
-        mCheckBoxFav.setChecked(mChecked);
-        for (final Pray p:prayList) {
-            mCheckBoxFav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (!isChecked){
-                        HolyModel.getInstance().removeFav(p.getId(),mPraysFavTable);
-                        Toast.makeText(AppContext.getAppContext(), "Добавлено в избранное", Toast.LENGTH_SHORT).show();
-                    }else HolyModel.getInstance().setFav(p.getId(),mPraysFavTable);
-                    Toast.makeText(AppContext.getAppContext(), "Удалено из избранного", Toast.LENGTH_SHORT).show();
+//        for (int i = 0; i < prayList.size(); i++) {
+            mChecked = HolyModel.getInstance().checkFav(prayList.get(position).getId(), mPraysFavTable);
+            mCheckBoxFav = holder.itemView.findViewById(R.id.pray_fav_img);
+            mCheckBoxFav.setChecked(mChecked);
+//        }
+        mCheckBoxFav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!isChecked) {
+                    HolyModel.getInstance().removeFav(currentId, mPraysFavTable);
+                    Toast.makeText(AppContext.getAppContext(), "Удалено", Toast.LENGTH_SHORT).show();
+                } else {
+                    HolyModel.getInstance().setFav(currentId, mPraysFavTable);
+                    Toast.makeText(AppContext.getAppContext(), "Добавлено в избранное", Toast.LENGTH_SHORT).show();
                 }
-            });
-        }
-
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {

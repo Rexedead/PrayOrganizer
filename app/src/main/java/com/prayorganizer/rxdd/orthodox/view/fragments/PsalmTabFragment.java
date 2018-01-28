@@ -93,9 +93,9 @@ public class PsalmTabFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (!isChecked){
                     HolyModel.getInstance().removeFav(mPID,mPsalmFavTable);
-                    Toast.makeText(getContext(), "Добавлено в избранное", Toast.LENGTH_SHORT).show();
-                }else HolyModel.getInstance().setFav(mPID,mPsalmFavTable);
-                Toast.makeText(getContext(), "Удалено из избранного", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Удалено из избранного", Toast.LENGTH_SHORT).show();
+                }else {HolyModel.getInstance().setFav(mPID,mPsalmFavTable);
+                Toast.makeText(getContext(), "Добавлено в избранное", Toast.LENGTH_SHORT).show();}
             }
         });
 
