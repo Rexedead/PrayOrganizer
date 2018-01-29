@@ -62,7 +62,6 @@ public class IconsMainFragment extends FilteringListFragment {
 
     @Override
     protected int getIdRecyclerView() {
-        System.out.println(R.id.recycler_view);
         return R.id.recycler_view;
     }
 

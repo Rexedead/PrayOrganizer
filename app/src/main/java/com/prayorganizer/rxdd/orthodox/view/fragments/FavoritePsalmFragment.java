@@ -8,7 +8,7 @@ import com.prayorganizer.rxdd.orthodox.R;
 
 /**
  * Created by Rexedead on 14.01.2018.
- *
+ * todo отображать избранное спалмов
  */
 
 public class FavoritePsalmFragment extends Fragment {

@@ -4,7 +4,7 @@
     <item
         android:id="@+id/action_pray"
         android:enabled="true"
-        android:icon="@drawable/ic_cm1"
+        android:icon="@drawable/fav_button"
         android:title="Моли"
         app:showAsAction="ifRoom" />
     <item

@@ -58,11 +58,10 @@ public class PrayAdapter extends RecyclerView.Adapter<PrayAdapter.PrayViewHolder
         holder.header.setText(prayList.get(position).getHead());
         final String currentId = prayList.get(position).getId();
 
-//        for (int i = 0; i < prayList.size(); i++) {
             mChecked = HolyModel.getInstance().checkFav(prayList.get(position).getId(), mPraysFavTable);
             mCheckBoxFav = holder.itemView.findViewById(R.id.pray_fav_img);
             mCheckBoxFav.setChecked(mChecked);
-//        }
+
         mCheckBoxFav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (!isChecked) {

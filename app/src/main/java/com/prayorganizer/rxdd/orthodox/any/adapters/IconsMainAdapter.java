@@ -7,12 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.prayorganizer.rxdd.orthodox.AppContext;
 import com.prayorganizer.rxdd.orthodox.R;
 import com.prayorganizer.rxdd.orthodox.any.GlideApp;
+import com.prayorganizer.rxdd.orthodox.any.MyDividerItemDecoration;
 import com.prayorganizer.rxdd.orthodox.content.IconsMain;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.CropTransformation;
+
+import static com.prayorganizer.rxdd.orthodox.any.GlideOptions.bitmapTransform;
 
 /**
  * Created by Rexedead on 08.01.2018.
@@ -75,9 +81,12 @@ public class IconsMainAdapter extends FilterAdapter<IconsMain, IconsMainAdapter.
         holder.icon_title.setText(iconsMain.getIcon_name());
         GlideApp.with(AppContext.getAppContext())
                 .load(iconsMain.getIcon_link())
-                .placeholder(R.drawable.ic_cm1)
-                .override(200, 200)
-                .optionalCenterCrop()
+                .placeholder(R.drawable.fav_button)
+//                .apply(bitmapTransform(new SketchFilterTransformation()))
+//                .apply(bitmapTransform(new BrightnessFilterTransformation(5.5f)).dontAnimate())
+                .apply(bitmapTransform(
+                        new CropTransformation(MyDividerItemDecoration.dip2px(AppContext.getAppContext(), 200), MyDividerItemDecoration.dip2px(AppContext.getAppContext(), 200),
+                                CropTransformation.CropType.TOP)))
                 .into(holder.icon_img);
     }
 

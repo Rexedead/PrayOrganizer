@@ -1,10 +1,19 @@
 package com.prayorganizer.rxdd.orthodox.view.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.prayorganizer.rxdd.orthodox.R;
+import com.prayorganizer.rxdd.orthodox.any.MyDividerItemDecoration;
+import com.prayorganizer.rxdd.orthodox.any.adapters.PrayAdapter;
+import com.prayorganizer.rxdd.orthodox.content.Pray;
+import com.prayorganizer.rxdd.orthodox.database.HolyModel;
+
+import java.util.List;
 
 /**
  * Created by Rexedead on 14.01.2018.
@@ -13,6 +22,9 @@ import com.prayorganizer.rxdd.orthodox.R;
 
 public class FavoritePrayFragment extends Fragment {
 
+    private List<Pray> mPrayList;
+    private PrayAdapter mPrayAdapter;
+
     public static FavoritePrayFragment newInstance() {
         return new FavoritePrayFragment();
     }
@@ -20,12 +32,22 @@ public class FavoritePrayFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mPrayList = HolyModel.getInstance().getFavsOfPrays();
+        mPrayAdapter = new PrayAdapter(mPrayList);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        
-        return inflater.inflate(R.layout.recycler_view, container, false);
+        View view = inflater.inflate(R.layout.prays_recycler,container, false );
+        RecyclerView recyclerView = view.findViewById(R.id.pray_single_list_recycler_view);
+
+        recyclerView.addItemDecoration(new MyDividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL, 16));
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mPrayAdapter);
+        return view;
     }
 }

@@ -16,7 +16,6 @@ import java.util.List;
 
 /**
  * Created by Rexedead on 30.12.2017.
- * todo select psalt_ru_line from psalt_main where _id_psalt in(select * from psalt_fav)
  *
  */
 
@@ -296,6 +295,28 @@ public class HolyModel {
         }
         mDatabaseHelper.close();
         return praysFavorites;
+    }
+
+    public List<Psalm> getFavsOfPsalms(){
+        List<Psalm> psalmFavorites = new ArrayList<>();
+        String Query = "SELECT * FROM " + Tables.PSALM_MAIN +" WHERE "+Columns.PSALM_ID+" IN (SELECT * FROM "+Tables.FAV_PSALMS+")";
+        mDatabaseHelper.openDB();
+        Cursor cursor = mDatabaseHelper.getCursor(Query);
+        if (cursor.moveToFirst()) {
+            do {
+                Psalm psalm_fav;
+                psalm_fav = new Psalm( //String[] linesRU, String[] linesCSL, String headRU, String headCSL)
+                        cursor.getString(cursor.getColumnIndex(Columns.PSALM_RU)).split("\n"),
+                        cursor.getString(cursor.getColumnIndex(Columns.PSALM_CSL)).split("\n"),
+                        cursor.getString(cursor.getColumnIndex(Columns.PSALM_HEAD_RU)),
+                        cursor.getString(cursor.getColumnIndex(Columns.PSALM_HEAD_CSL))
+                );
+                psalmFavorites.add(psalm_fav);
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        mDatabaseHelper.close();
+        return psalmFavorites;
     }
 
 }

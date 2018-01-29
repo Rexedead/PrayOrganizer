@@ -102,8 +102,6 @@ public class PsalmTabFragment extends Fragment {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-
         recyclerView.setAdapter(mPsalmAdapter);
         return view;
     }
