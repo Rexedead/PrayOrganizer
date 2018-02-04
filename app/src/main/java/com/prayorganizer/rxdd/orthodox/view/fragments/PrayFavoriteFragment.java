@@ -17,16 +17,16 @@ import java.util.List;
 
 /**
  * Created by Rexedead on 14.01.2018.
- *
+ * todo add svg via https://stackoverflow.com/questions/41802267/using-svg-in-android-selector-for-buttons
  */
 
-public class FavoritePrayFragment extends Fragment {
+public class PrayFavoriteFragment extends Fragment {
 
     private List<Pray> mPrayList;
     private PrayAdapter mPrayAdapter;
 
-    public static FavoritePrayFragment newInstance() {
-        return new FavoritePrayFragment();
+    public static PrayFavoriteFragment newInstance() {
+        return new PrayFavoriteFragment();
     }
 
     @Override

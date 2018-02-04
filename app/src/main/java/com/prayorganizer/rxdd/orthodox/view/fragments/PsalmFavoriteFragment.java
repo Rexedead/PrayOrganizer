@@ -8,13 +8,13 @@ import com.prayorganizer.rxdd.orthodox.R;
 
 /**
  * Created by Rexedead on 14.01.2018.
- *
+ * todo отображать избранное спалмов
  */
 
-public class FavoriteIconsFragment extends Fragment {
+public class PsalmFavoriteFragment extends Fragment {
 
-    public static FavoriteIconsFragment newInstance() {
-        return new FavoriteIconsFragment();
+    public static PsalmFavoriteFragment newInstance() {
+        return new PsalmFavoriteFragment();
     }
 
     @Override
@@ -25,6 +25,6 @@ public class FavoriteIconsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.favorites_icons_fragment, container, false);
+        return inflater.inflate(R.layout.favorites_psalms_fragment, container, false);
     }
 }

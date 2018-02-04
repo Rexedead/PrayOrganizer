@@ -10,9 +10,9 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.prayorganizer.rxdd.orthodox.R;
-import com.prayorganizer.rxdd.orthodox.view.fragments.FavoriteIconsFragment;
-import com.prayorganizer.rxdd.orthodox.view.fragments.FavoritePrayFragment;
-import com.prayorganizer.rxdd.orthodox.view.fragments.FavoritePsalmFragment;
+import com.prayorganizer.rxdd.orthodox.view.fragments.IconsFavoriteFragment;
+import com.prayorganizer.rxdd.orthodox.view.fragments.PrayFavoriteFragment;
+import com.prayorganizer.rxdd.orthodox.view.fragments.PsalmFavoriteFragment;
 
 /**
  * Created by Rexedead on 14.01.2018.
@@ -41,13 +41,13 @@ public class FavActivity extends HolyActivity {
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
                             case R.id.action_pray:
-                                selectedFragment = FavoritePrayFragment.newInstance();
+                                selectedFragment = PrayFavoriteFragment.newInstance();
                                 break;
                             case R.id.action_psalm:
-                                selectedFragment = FavoritePsalmFragment.newInstance();
+                                selectedFragment = PsalmFavoriteFragment.newInstance();
                                 break;
                             case R.id.action_icon:
-                                selectedFragment = FavoriteIconsFragment.newInstance();
+                                selectedFragment = IconsFavoriteFragment.newInstance();
                                 break;
                         }
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -59,7 +59,7 @@ public class FavActivity extends HolyActivity {
 
         //Manually displaying the first fragment - one time only
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fav_frame_layout, FavoritePrayFragment.newInstance());
+        transaction.replace(R.id.fav_frame_layout, PrayFavoriteFragment.newInstance());
         transaction.commit();
     }
 

@@ -19,6 +19,7 @@ import java.util.List;
 
 /**
  * Created by Rexedead on 07.01.2018.
+ * todo https://code.tutsplus.com/ru/tutorials/getting-started-with-recyclerview-and-cardview-on-android--cms-23465
  */
 
 public class PrayAdapter extends RecyclerView.Adapter<PrayAdapter.PrayViewHolder> {

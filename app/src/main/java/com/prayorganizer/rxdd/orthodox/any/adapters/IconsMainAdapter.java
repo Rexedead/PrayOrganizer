@@ -22,7 +22,6 @@ import static com.prayorganizer.rxdd.orthodox.any.GlideOptions.bitmapTransform;
 
 /**
  * Created by Rexedead on 08.01.2018.
- * todo glide cut off from top
  */
 
 public class IconsMainAdapter extends FilterAdapter<IconsMain, IconsMainAdapter.IconsViewHolder> {
@@ -40,9 +39,10 @@ public class IconsMainAdapter extends FilterAdapter<IconsMain, IconsMainAdapter.
 
 
     static class IconsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-          IconsViewHolderClick mListenerHolder;
+        IconsViewHolderClick mListenerHolder;
         TextView icon_title;
         ImageView icon_img;
+
         IconsViewHolder(View view, IconsViewHolderClick listener) {
             super(view);
             view.setOnClickListener(this);
